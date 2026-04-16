@@ -1,0 +1,504 @@
+:root {
+  --panel: rgba(8, 8, 8, 0.76);
+  --panel-soft: rgba(10, 10, 10, 0.82);
+  --line: rgba(255, 255, 255, 0.08);
+  --text: #f5f1e8;
+  --muted: #cfc6b2;
+  --gold: #d8ae45;
+  --gold-soft: #efd589;
+  --link: #cfe2ff;
+  --green: #7dffb1;
+  --red: #ff7d7d;
+  --orange: #ffd36f;
+  --max-width: 1200px;
+  --radius-lg: 22px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.78)),
+    url("https://goldgrouppartner.online/static/media/app-bg.783da6483573bb91708a.png") center top / cover fixed no-repeat;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(var(--max-width), calc(100% - 20px));
+  margin: 0 auto;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(5, 5, 5, 0.88);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+}
+
+.header-wrap {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 10px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.brand-logo {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, #f0d690, #d8ae45);
+  color: #111;
+  font-weight: 900;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.brand-text strong {
+  display: block;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+}
+
+.brand-text span {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.main-nav a {
+  font-size: 14px;
+  color: #eadfc8;
+}
+
+.main-nav a:hover {
+  color: var(--gold-soft);
+}
+
+.menu-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: transparent;
+  color: var(--text);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.trust-bar {
+  overflow: hidden;
+  white-space: nowrap;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(6, 6, 6, 0.72);
+}
+
+.trust-track {
+  display: inline-block;
+  min-width: 200%;
+  animation: trustScroll 26s linear infinite;
+  padding: 10px 0;
+}
+
+.trust-track span {
+  display: inline-block;
+  margin-right: 34px;
+  color: var(--gold-soft);
+  font-size: 13px;
+}
+
+@keyframes trustScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.hero {
+  padding: 26px 0 14px;
+}
+
+.hero-card,
+.company-block,
+.info-card,
+.domain-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+
+.hero-card {
+  padding: 24px 18px;
+}
+
+.eyebrow {
+  color: var(--gold-soft);
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+  font-size: clamp(30px, 7vw, 52px);
+  line-height: 1.08;
+  margin-bottom: 12px;
+  max-width: 760px;
+}
+
+.hero-desc {
+  color: var(--muted);
+  font-size: 15px;
+  max-width: 720px;
+}
+
+.hero-actions {
+  margin-top: 18px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.btn-primary {
+  background: linear-gradient(145deg, #f0d690, #d8ae45);
+  color: #111;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text);
+}
+
+.section {
+  padding: 24px 0;
+}
+
+.section-head {
+  margin-bottom: 14px;
+}
+
+.section-head h2 {
+  font-size: clamp(26px, 4vw, 38px);
+  margin-bottom: 6px;
+}
+
+.section-head p {
+  color: var(--muted);
+  font-size: 14px;
+  max-width: 860px;
+}
+
+.last-update {
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.company-block {
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+.company-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.company-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(216, 174, 69, 0.12);
+  color: var(--gold-soft);
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.company-head h3 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.company-head p {
+  color: var(--muted);
+  font-size: 14px;
+  max-width: 780px;
+}
+
+.domain-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.top-domains,
+.extra-domains {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.extra-domains {
+  display: none;
+}
+
+.extra-domains.show {
+  display: flex;
+}
+
+.domain-card {
+  display: block;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+  transition: 0.2s ease;
+}
+
+a.domain-card:hover {
+  border-color: rgba(240, 213, 137, 0.22);
+  background: var(--panel-soft);
+}
+
+.domain-card.disabled {
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
+.domain-card.loading {
+  opacity: 0.9;
+}
+
+.domain-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.domain-name {
+  font-size: 14px;
+  color: var(--link);
+  word-break: break-all;
+}
+
+.domain-meta {
+  margin-top: 8px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 74px;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: capitalize;
+  flex-shrink: 0;
+}
+
+.status.active {
+  color: var(--green);
+  background: rgba(20, 170, 90, 0.12);
+}
+
+.status.inactive {
+  color: var(--red);
+  background: rgba(255, 70, 70, 0.12);
+}
+
+.status.checking {
+  color: var(--orange);
+  background: rgba(255, 180, 40, 0.12);
+}
+
+.toggle-btn {
+  width: 100%;
+  min-height: 42px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  color: #f5f1e8;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.info-grid,
+.faq-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.info-card {
+  padding: 20px;
+}
+
+.info-card h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.info-card p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.contact-link {
+  display: block;
+  color: var(--link);
+  font-size: 14px;
+  word-break: break-all;
+}
+
+.site-footer {
+  padding: 30px 0 42px;
+  color: #b1a88f;
+  font-size: 13px;
+}
+
+.footer-wrap {
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: min(var(--max-width), calc(100% - 34px));
+  }
+
+  .info-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .faq-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-card {
+    padding: 30px;
+  }
+
+  .company-block {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 860px) {
+  .menu-toggle {
+    display: grid;
+    place-items: center;
+  }
+
+  .main-nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding-bottom: 10px;
+  }
+
+  .main-nav.show {
+    display: flex;
+  }
+
+  .header-wrap {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 767px) {
+  .company-head {
+    flex-direction: column;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .domain-main {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .status {
+    min-width: 68px;
+  }
+}
