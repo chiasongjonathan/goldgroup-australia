@@ -1,0 +1,25 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "goldgroup-australia",
+  "main": "worker.js",
+  "compatibility_date": "2026-04-17",
+
+  "assets": {
+    "directory": "./",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
+  },
+
+  "kv_namespaces": [
+    {
+      "binding": "MONITOR_KV",
+      "id": "019e6116e7204f48bddefca820610669"
+    }
+  ],
+
+  "triggers": {
+    "crons": [
+      "*/10 * * * *"
+    ]
+  }
+}
