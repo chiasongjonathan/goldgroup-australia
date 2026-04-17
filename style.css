@@ -616,27 +616,19 @@ a.domain-card:hover {
   padding: 6px;
 }
 
-/* 核心：降低存在感 */
 .company-logo {
-  width: 80px;      
+  width: 80px;
   height: 80px;
   object-fit: contain;
-
-  filter: brightness(0.9) contrast(0.95);  /* 👈 去掉那种“广告感” */
+  filter: brightness(0.9) contrast(0.95);
   transition: all 0.3s ease;
 }
-.company-desc {
-  font-size: 14px;        /* 👈 变小 */
-  color: rgba(255,255,255,0.6);  /* 👈 灰一点 */
-  line-height: 1.6;       /* 👈 提升可读性 */
-  margin-bottom: 8px;
 
-}
 .company-header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
   margin-bottom: 14px;
 }
 
@@ -645,7 +637,7 @@ a.domain-card:hover {
   align-items: center;
   gap: 14px;
   min-width: 0;
-  flex: 1;
+  width: 100%;
 }
 
 .company-heading {
@@ -653,6 +645,7 @@ a.domain-card:hover {
   flex-direction: column;
   gap: 8px;
   min-width: 0;
+  flex: 1;
 }
 
 .company-heading h3 {
@@ -661,12 +654,27 @@ a.domain-card:hover {
   margin: 0;
 }
 
+.company-label {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  min-height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(215,176,76,0.12);
+  color: #eed37d;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
 .company-right {
-  flex-shrink: 0;
+  width: 100%;
 }
 
 .install-btn {
-  min-height: 40px;
+  width: 100%;
+  min-height: 44px;
   padding: 0 16px;
   border-radius: 999px;
   display: inline-flex;
@@ -705,18 +713,6 @@ a.domain-card:hover {
 
 .status {
   flex-shrink: 0;
-}
-
-@media (max-width: 767px) {
-  .company-header {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-  }
-
-  .install-btn {
-    width: 100%;
-  }
 }
 
 .extra-domains {
