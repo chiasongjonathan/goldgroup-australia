@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Gold Group Australia</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #fff;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 196, 0, 0.10), transparent 30%),
+        radial-gradient(circle at 80% 30%, rgba(255, 196, 0, 0.08), transparent 25%),
+        linear-gradient(180deg, #050505 0%, #0b0b0b 55%, #090909 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.16;
+      background-image:
+        radial-gradient(#c99618 1px, transparent 1px),
+        radial-gradient(#c99618 1px, transparent 1px);
+      background-size: 80px 80px, 120px 120px;
+      background-position: 0 0, 40px 40px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(5, 5, 5, 0.96);
+      border-bottom: 1px solid rgba(255, 208, 71, 0.10);
+      backdrop-filter: blur(10px);
+    }
+
+    .header-inner {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .brand-logo {
+      background: none !important;
+      border: none !important;
+      box-shadow: none !important;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-shrink: 0;
+    }
+
+    .brand-logo img {
+      width: 56px;
+      height: auto;
+      object-fit: contain;
+      transform: scale(1.08);
+      transform-origin: left center;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.35));
+      display: block;
+    }
+
+    .brand-text {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .brand-text strong {
+      font-size: 16px;
+      line-height: 1.15;
+      font-weight: 800;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .brand-text span {
+      margin-top: 4px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.78);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .menu-toggle {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: #fff;
+      position: relative;
+      border-radius: 2px;
+    }
+
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 18px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+    }
+
+    .menu-toggle span::before { top: -6px; }
+    .menu-toggle span::after { top: 6px; }
+
+    .mobile-menu {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 0 12px 14px;
+      display: none;
+    }
+
+    .mobile-menu.open { display: block; }
+
+    .mobile-menu a {
+      display: block;
+      padding: 14px 0;
+      font-size: 15px;
+      color: rgba(255,255,255,0.95);
+    }
+
+    .ticker-wrap {
+      overflow: hidden;
+      border-top: 1px solid rgba(255, 208, 71, 0.08);
+      border-bottom: 1px solid rgba(255, 208, 71, 0.08);
+      background: rgba(255, 196, 0, 0.04);
+    }
+
+    .ticker {
+      display: inline-block;
+      white-space: nowrap;
+      padding: 8px 0;
+      font-size: 12px;
+      color: #d9b75b;
+      animation: tickerMove 25s linear infinite;
+    }
+
+    @keyframes tickerMove {
+      from { transform: translateX(100%); }
+      to { transform: translateX(-100%); }
+    }
+
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 18px 12px 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card,
+    .content-card,
+    .note-card {
+      background: linear-gradient(180deg, rgba(19,19,19,0.88), rgba(10,10,10,0.94));
+      border: 1px solid rgba(255, 208, 71, 0.12);
+      border-radius: 28px;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.03),
+        0 0 0 1px rgba(255,255,255,0.02);
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-card,
+    .content-card,
+    .note-card {
+      padding: 22px 18px 24px;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 700;
+      color: #e0bc59;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 28px;
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-size: 20px;
+      line-height: 1.15;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.86);
+      margin-bottom: 12px;
+    }
+
+    .note-card h3 {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #f1cb66;
+    }
+
+    .note-card p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <div class="brand-logo">
+          <img src="/public/image/GOLD LOGO.png" alt="Gold Group Australia Logo">
+        </div>
+        <div class="brand-text">
+          <strong>Gold Group Australia</strong>
+          <span>Official Website Directory</span>
+        </div>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <span></span>
+      </button>
+    </div>
+
+    <nav class="mobile-menu" id="mobileMenu">
+        <a href="/public/companies.html">Companies</a>
+        <a href="/public/about.html">About</a>
+        <a href="/public/support.html">Support</a>
+        <a href="/public/faq.html">FAQ</a>
+        <a href="/public/anti-scam&safety.html">Anti-Scam</a>
+    </nav>
+
+    <div class="ticker-wrap">
+      <div class="ticker">
+        Verified platform network • Trusted access across Australia • Secure and protected environment • Supported by recognised providers • Stable official access directory • 18+ only • Please engage responsibly
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero-card">
+      <div class="eyebrow">Official GGA Reference Page</div>
+      <h1>About Gold Group Australia</h1>
+      <p>
+        Gold Group Australia functions as a centralised website directory designed to present verified partner platform references
+        within one structured and recognisable network.
+      </p>
+      <p>
+        The purpose of the directory is to provide clearer access visibility, a more consistent company presentation standard,
+        and a central reference point for users seeking official partner listings and general platform guidance.
+      </p>
+    </section>
+
+    <section class="content-card">
+      <h2>Our Role</h2>
+      <p>
+        Gold Group Australia is positioned as an official reference hub rather than an individual platform account operator.
+        Its role is to organise partner company visibility, maintain a consistent directory standard, and help users distinguish
+        between listed companies within the wider network.
+      </p>
+      <p>
+        By consolidating company references into one location, the directory supports a cleaner access path, clearer brand separation,
+        and a more structured overview of the partner platforms shown within the network.
+      </p>
+    </section>
+
+    <section class="content-card">
+      <h2>Directory Structure</h2>
+      <p>
+        Each company included within the Gold Group Australia directory is displayed as a partner platform reference with its own
+        identity, access path, and support channel. This structure allows users to review company listings individually while still
+        using one central directory as the main reference point.
+      </p>
+      <p>
+        The network presentation is designed to remain simple, consistent, and user-facing, with the goal of improving official
+        website recognition and reducing confusion around platform identity.
+      </p>
+    </section>
+
+    <section class="content-card">
+      <h2>Platform Reference Standard</h2>
+      <p>
+        Gold Group Australia maintains a unified presentation style across partner listings so that users can recognise official
+        references more easily. This includes common company display formatting, clear support direction, and a centralised header
+        and navigation experience across the directory pages.
+      </p>
+      <p>
+        While each listed platform operates with its own structure and internal management, the directory itself exists to present
+        those references in a more consistent and accessible way.
+      </p>
+    </section>
+
+    <section class="note-card">
+      <h3>Important Notice</h3>
+      <p>Gold Group Australia serves as a company directory and official reference page.</p>
+      <p>For account-specific matters, users should contact the relevant platform directly through its official support channel.</p>
+      <p>18+ only. Please engage responsibly and follow all applicable local laws and platform terms.</p>
+    </section>
+  </main>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
