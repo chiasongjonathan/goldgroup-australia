@@ -243,6 +243,16 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
+    if (request.method === "OPTIONS") {
+      return new Response(null, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, OPTIONS",
+          "Access-Control-Allow-Headers": "*"
+        }
+      });
+    }
+
     if (url.pathname === "/api/status") {
       ctx.waitUntil(processChecks(env));
 
@@ -252,7 +262,10 @@ export default {
       return new Response(JSON.stringify(payload), {
         headers: {
           "content-type": "application/json; charset=utf-8",
-          "cache-control": "no-store"
+          "cache-control": "no-store",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, OPTIONS",
+          "Access-Control-Allow-Headers": "*"
         }
       });
     }
