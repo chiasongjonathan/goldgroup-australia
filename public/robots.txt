@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Block sensitive or useless paths
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+
+# Allow main pages
+Allow: /index.html
+Allow: /companies.html
+Allow: /about.html
+Allow: /support.html
+Allow: /faq.html
+Allow: /anti-scam&safety.html
+
+# Sitemap
+Sitemap: https://goldgroupaustralia.com/sitemap.xml
