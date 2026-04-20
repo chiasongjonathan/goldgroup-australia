@@ -6,15 +6,9 @@
   <title>Anti-Scam & Safety | Gold Group Australia</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
@@ -39,7 +33,7 @@
         radial-gradient(#c99618 1px, transparent 1px);
       background-size: 80px 80px, 120px 120px;
       background-position: 0 0, 40px 40px;
-      z-index: 0;
+      z-index: -1;
     }
 
     a {
@@ -53,17 +47,14 @@
       color: inherit;
     }
 
-    .page-wrap {
-      position: relative;
-      z-index: 1;
-      max-width: 420px;
+    .container {
+      width: 100%;
+      max-width: 1280px;
       margin: 0 auto;
-      min-height: 100vh;
+      padding: 0 24px;
     }
 
-    /* =========================
-       HEADER
-    ========================= */
+    /* HEADER */
     .site-header {
       position: sticky;
       top: 0;
@@ -73,57 +64,52 @@
       backdrop-filter: blur(10px);
     }
 
-    .header-inner {
+    .header-wrap {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      padding: 10px 12px;
+      flex-wrap: wrap;
+      gap: 16px;
+      min-height: 72px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       min-width: 0;
-      flex: 1;
+      flex-shrink: 0;
     }
 
     .brand-logo {
-      background: none !important;
-      border: none !important;
-      box-shadow: none !important;
       display: flex;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
       flex-shrink: 0;
     }
 
     .brand-logo img {
-      width: 56px;
+      display: block;
+      width: 54px;
       height: auto;
       object-fit: contain;
-      display: block;
-      transform: scale(1.08);
-      transform-origin: left center;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.35));
     }
 
     .brand-text {
-      min-width: 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      min-width: 0;
     }
 
     .brand-text strong {
       font-size: 16px;
       line-height: 1.15;
       font-weight: 800;
-      color: #fff;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      color: #fff;
     }
 
     .brand-text span {
@@ -135,90 +121,89 @@
       text-overflow: ellipsis;
     }
 
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-left: auto;
+    }
+
+    .main-nav a {
+      position: relative;
+      font-size: 15px;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .main-nav a:hover {
+      color: #f1cb66;
+    }
+
+    .main-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: #f1cb66;
+      transition: width 0.25s ease;
+    }
+
+    .main-nav a:hover::after {
+      width: 100%;
+    }
+
     .menu-toggle {
+      display: none;
       width: 44px;
       height: 44px;
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,0.12);
       background: rgba(255,255,255,0.03);
-      display: flex;
+      color: #fff;
+      font-size: 22px;
+      line-height: 1;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      flex-shrink: 0;
     }
 
-    .menu-toggle span {
-      display: block;
-      width: 18px;
-      height: 2px;
-      background: #fff;
-      position: relative;
-      border-radius: 2px;
-    }
-
-    .menu-toggle span::before,
-    .menu-toggle span::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      width: 18px;
-      height: 2px;
-      background: #fff;
-      border-radius: 2px;
-    }
-
-    .menu-toggle span::before { top: -6px; }
-    .menu-toggle span::after { top: 6px; }
-
-    .mobile-menu {
-      display: none;
-      padding: 4px 12px 14px;
-      background: rgba(5, 5, 5, 0.98);
-      border-top: 1px solid rgba(255,255,255,0.04);
-    }
-
-    .mobile-menu.open {
-      display: block;
-    }
-
-    .mobile-menu a {
-      display: block;
-      padding: 14px 0;
-      font-size: 15px;
-      color: rgba(255,255,255,0.95);
-    }
-
-    /* =========================
-       TICKER
-    ========================= */
-    .ticker-wrap {
+    /* TRUST BAR */
+    .trust-bar {
+      width: 100%;
       overflow: hidden;
       border-top: 1px solid rgba(255, 208, 71, 0.08);
       border-bottom: 1px solid rgba(255, 208, 71, 0.08);
       background: rgba(255, 196, 0, 0.04);
+    }
+
+    .trust-track {
+      width: 100%;
+      overflow: hidden;
       white-space: nowrap;
     }
 
-    .ticker {
+    .trust-track span {
       display: inline-block;
-      white-space: nowrap;
-      padding: 8px 0;
+      padding: 10px 0;
       font-size: 12px;
       color: #d9b75b;
-      animation: tickerMove 24s linear infinite;
+      white-space: nowrap;
+      animation: trustScroll 24s linear infinite;
     }
 
-    @keyframes tickerMove {
+    @keyframes trustScroll {
       from { transform: translateX(100%); }
-      to   { transform: translateX(-100%); }
+      to { transform: translateX(-100%); }
     }
 
-    /* =========================
-       CONTENT
-    ========================= */
-    .content {
-      padding: 24px 12px 40px;
+    /* PAGE CONTENT */
+    .page-content {
+      position: relative;
+      z-index: 1;
+      padding-top: 24px;
+      padding-bottom: 40px;
+      max-width: 980px;
     }
 
     .hero-block {
@@ -332,43 +317,105 @@
     .footer-space {
       height: 24px;
     }
+
+    /* MOBILE */
+    @media (max-width: 1023px) {
+      .container {
+        padding: 0 12px;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+        width: 44px;
+        height: 44px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 14px;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.03);
+        color: #fff;
+        font-size: 22px;
+        cursor: pointer;
+      }
+
+      .main-nav {
+        display: none;
+        position: static;
+        width: 100%;
+        margin-top: 10px;
+        padding: 0 0 14px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .main-nav.open {
+        display: flex;
+      }
+
+      .main-nav a {
+        display: block;
+        width: 100%;
+        padding: 14px 0;
+        font-size: 15px;
+        color: #fff;
+      }
+
+      .main-nav a::after {
+        display: none;
+      }
+
+      .page-content {
+        max-width: 100%;
+        padding-top: 18px;
+        padding-bottom: 28px;
+      }
+
+      .cta-row {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="page-wrap">
-    <header class="site-header">
-      <div class="header-inner">
-        <a href="index.html" class="brand">
-          <div class="brand-logo">
-            <img src="/public/image/GOLD LOGO.png" alt="Gold Group Australia Logo">
-          </div>
-          <div class="brand-text">
-            <strong>Gold Group Australia</strong>
-            <span>Official Website Directory</span>
-          </div>
-        </a>
-
-        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
-          <span></span>
-        </button>
-      </div>
-
-      <nav class="mobile-menu" id="mobileMenu">
-        <a href="/public/companies.html">Companies</a>
-        <a href="/public/about.html">About</a>
-        <a href="/public/support.html">Support</a>
-        <a href="/public/faq.html">FAQ</a>
-        <a href="/public/anti-scam&safety.html">Anti-Scam</a>
-      </nav>
-
-      <div class="ticker-wrap">
-        <div class="ticker">
-          Verified platform network • Trusted access across Australia • Secure and protected environment • Supported by recognised providers • Official access directory • Stay alert • Report suspicious links
+  <header class="site-header">
+    <div class="container header-wrap">
+      <a href="index.html" class="brand">
+        <div class="brand-logo">
+          <img src="image/GOLD LOGO.png" alt="Gold Group Australia Logo">
         </div>
-      </div>
-    </header>
+        <div class="brand-text">
+          <strong>Gold Group Australia</strong>
+          <span>Official Website Directory</span>
+        </div>
+      </a>
 
-    <main class="content">
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="companies.html">Companies</a>
+        <a href="about.html">About</a>
+        <a href="support.html">Support</a>
+        <a href="faq.html">FAQ</a>
+        <a href="anti-scam&safety.html">Anti-Scam</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="trust-bar">
+    <div class="trust-track">
+      <span>
+        Verified platform network • Trusted access across Australia • Secure and protected environment • Supported by recognised providers • Official access directory • Stay alert • Report suspicious links
+      </span>
+    </div>
+  </div>
+
+  <main>
+    <div class="container page-content">
       <section class="hero-block">
         <div class="eyebrow">Official GGA Safety Page</div>
         <h1>Anti-Scam & Safety</h1>
@@ -479,7 +526,7 @@
         </p>
 
         <div class="cta-row">
-          <a href="mailto:suppport@goldgorupaustralia.com" class="cta-btn">Contact Support</a>
+          <a href="mailto:support@goldgroupaustralia.com" class="cta-btn">Contact Support</a>
           <a href="mailto:compliance@goldgroupaustralia.com" class="cta-btn">Report Suspicious</a>
         </div>
       </section>
@@ -511,16 +558,27 @@
       </section>
 
       <div class="footer-space"></div>
-    </main>
-  </div>
+    </div>
+  </main>
 
   <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
 
-    menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-    });
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", function (e) {
+        e.stopPropagation();
+        mainNav.classList.toggle("open");
+      });
+
+      mainNav.addEventListener("click", function (e) {
+        e.stopPropagation();
+      });
+
+      document.addEventListener("click", function () {
+        mainNav.classList.remove("open");
+      });
+    }
   </script>
 </body>
 </html>

@@ -5,383 +5,442 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FAQ | Gold Group Australia</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      color: #fff;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(255, 196, 0, 0.10), transparent 30%),
-        radial-gradient(circle at 80% 30%, rgba(255, 196, 0, 0.08), transparent 25%),
-        linear-gradient(180deg, #050505 0%, #0b0b0b 55%, #090909 100%);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
+ * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.16;
-      background-image:
-        radial-gradient(#c99618 1px, transparent 1px),
-        radial-gradient(#c99618 1px, transparent 1px);
-      background-size: 80px 80px, 120px 120px;
-      background-position: 0 0, 40px 40px;
-    }
+html { scroll-behavior: smooth; }
 
-    a { color: inherit; text-decoration: none; }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 196, 0, 0.10), transparent 30%),
+    radial-gradient(circle at 80% 30%, rgba(255, 196, 0, 0.08), transparent 25%),
+    linear-gradient(180deg, #050505 0%, #0b0b0b 55%, #090909 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
 
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(5, 5, 5, 0.96);
-      border-bottom: 1px solid rgba(255, 208, 71, 0.10);
-      backdrop-filter: blur(10px);
-    }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.16;
+  background-image:
+    radial-gradient(#c99618 1px, transparent 1px),
+    radial-gradient(#c99618 1px, transparent 1px);
+  background-size: 80px 80px, 120px 120px;
+  background-position: 0 0, 40px 40px;
+}
 
-    .header-inner {
-      max-width: 480px;
-      margin: 0 auto;
-      padding: 10px 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 0;
-      flex: 1;
-    }
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
 
-    .brand-logo {
-      background: none !important;
-      border: none !important;
-      box-shadow: none !important;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      flex-shrink: 0;
-    }
+/* HEADER */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(5, 5, 5, 0.96);
+  border-bottom: 1px solid rgba(255, 208, 71, 0.10);
+  backdrop-filter: blur(10px);
+}
 
-    .brand-logo img {
-      width: 56px;
-      height: auto;
-      object-fit: contain;
-      transform: scale(1.08);
-      transform-origin: left center;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.35));
-      display: block;
-    }
+.header-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  min-height: 72px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  flex-shrink: 0;
+}
 
-    .brand-text {
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+.brand-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
 
-    .brand-text strong {
-      font-size: 16px;
-      line-height: 1.15;
-      font-weight: 800;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+.brand-logo img {
+  display: block;
+  width: 54px;
+  height: auto;
+  object-fit: contain;
+}
 
-    .brand-text span {
-      margin-top: 4px;
-      font-size: 12px;
-      color: rgba(255,255,255,0.78);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
 
-    .menu-toggle {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.03);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
+.brand-text strong {
+  font-size: 16px;
+  line-height: 1.15;
+  font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-    .menu-toggle span {
-      display: block;
-      width: 18px;
-      height: 2px;
-      background: #fff;
-      position: relative;
-      border-radius: 2px;
-    }
+.brand-text span {
+  margin-top: 4px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.78);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-    .menu-toggle span::before,
-    .menu-toggle span::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      width: 18px;
-      height: 2px;
-      background: #fff;
-      border-radius: 2px;
-    }
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-left: auto;
+}
 
-    .menu-toggle span::before { top: -6px; }
-    .menu-toggle span::after { top: 6px; }
+.main-nav a {
+  position: relative;
+  font-size: 15px;
+  color: rgba(255,255,255,0.92);
+}
 
-    .mobile-menu {
-      max-width: 480px;
-      margin: 0 auto;
-      padding: 0 12px 14px;
-      display: none;
-    }
+.main-nav a:hover {
+  color: #f1cb66;
+}
 
-    .mobile-menu.open { display: block; }
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #f1cb66;
+  transition: width 0.25s ease;
+}
 
-    .mobile-menu a {
-      display: block;
-      padding: 14px 0;
-      font-size: 15px;
-      color: rgba(255,255,255,0.95);
-    }
+.main-nav a:hover::after {
+  width: 100%;
+}
 
-    .ticker-wrap {
-      overflow: hidden;
-      border-top: 1px solid rgba(255, 208, 71, 0.08);
-      border-bottom: 1px solid rgba(255, 208, 71, 0.08);
-      background: rgba(255, 196, 0, 0.04);
-    }
+.menu-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.03);
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
 
-    .ticker {
-      display: inline-block;
-      white-space: nowrap;
-      padding: 8px 0;
-      font-size: 12px;
-      color: #d9b75b;
-      animation: tickerMove 40s linear infinite;
-    }
+/* TRUST BAR */
+.trust-bar {
+  width: 100%;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 208, 71, 0.08);
+  border-bottom: 1px solid rgba(255, 208, 71, 0.08);
+  background: rgba(255, 196, 0, 0.04);
+}
 
-    @keyframes tickerMove {
-      from { transform: translateX(100%); }
-      to { transform: translateX(-100%); }
-    }
+.trust-track {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
 
-    .container {
-      max-width: 480px;
-      margin: 0 auto;
-      padding: 18px 12px 28px;
-      position: relative;
-      z-index: 1;
-    }
+.trust-track span {
+  display: inline-block;
+  padding: 10px 0;
+  font-size: 12px;
+  color: #d9b75b;
+  white-space: nowrap;
+  animation: trustScroll 40s linear infinite;
+}
 
-    .hero-card,
-    .content-card,
-    .faq-item {
-      background: linear-gradient(180deg, rgba(19,19,19,0.88), rgba(10,10,10,0.94));
-      border: 1px solid rgba(255, 208, 71, 0.12);
-      border-radius: 28px;
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.03),
-        0 0 0 1px rgba(255,255,255,0.02);
-      backdrop-filter: blur(6px);
-    }
+@keyframes trustScroll {
+  from { transform: translateX(100%); }
+  to { transform: translateX(-100%); }
+}
 
-    .hero-card {
-      padding: 22px 18px 24px;
-      margin-bottom: 22px;
-    }
+/* PAGE CONTENT */
+.page-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 24px;
+  padding-bottom: 40px;
+  max-width: 900px;
+}
 
-    .eyebrow {
-      font-size: 13px;
-      font-weight: 700;
-      color: #e0bc59;
-      margin-bottom: 12px;
-    }
+.hero-card,
+.content-card,
+.faq-item {
+  background: linear-gradient(180deg, rgba(19,19,19,0.88), rgba(10,10,10,0.94));
+  border: 1px solid rgba(255, 208, 71, 0.12);
+  border-radius: 28px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.03),
+    0 0 0 1px rgba(255,255,255,0.02);
+  backdrop-filter: blur(6px);
+}
 
-    h1 {
-      font-size: 28px;
-      line-height: 1.05;
-      font-weight: 900;
-      letter-spacing: -0.5px;
-      margin-bottom: 18px;
-    }
+.hero-card {
+  padding: 22px 18px 24px;
+  margin-bottom: 22px;
+    margin-top: 22px;
+}
 
-    .hero-card p {
-      font-size: 15px;
-      line-height: 1.75;
-      color: rgba(255,255,255,0.88);
-      margin-bottom: 12px;
-    }
+.eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  color: #e0bc59;
+  margin-bottom: 12px;
+}
 
-    .hero-btns {
-      margin-top: 20px;
-      display: grid;
-      gap: 14px;
-    }
+h1 {
+  font-size: 28px;
+  line-height: 1.05;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  margin-bottom: 18px;
+}
 
-    .btn-primary,
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 50px;
-      border-radius: 18px;
-      font-size: 15px;
-      font-weight: 800;
-      text-align: center;
-    }
+.hero-card p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.88);
+  margin-bottom: 12px;
+}
 
-    .btn-primary {
-      color: #fff;
-      background: linear-gradient(90deg, #9a7411 0%, #d8ad2c 55%, #c9980c 100%);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
-    }
+.hero-btns {
+  margin-top: 20px;
+  display: grid;
+  gap: 14px;
+}
 
-    .btn-secondary {
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.02);
-      color: #fff;
-    }
+.btn-primary,
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  border-radius: 18px;
+  font-size: 15px;
+  font-weight: 800;
+  text-align: center;
+}
 
-    .section-title {
-      font-size: 24px;
-      line-height: 1.08;
-      font-weight: 900;
-      letter-spacing: -0.4px;
-      margin-bottom: 10px;
-    }
+.btn-primary {
+  color: #fff;
+  background: linear-gradient(90deg, #9a7411 0%, #d8ad2c 55%, #c9980c 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+}
 
-    .section-lead {
-      font-size: 15px;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.82);
-      margin-bottom: 18px;
-    }
+.btn-secondary {
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.02);
+  color: #fff;
+}
 
-    .faq-list {
-      display: grid;
-      gap: 14px;
-    }
+.section-title {
+  font-size: 24px;
+  line-height: 1.08;
+  font-weight: 900;
+  letter-spacing: -0.4px;
+  margin-bottom: 10px;
+}
 
-    .faq-item {
-      overflow: hidden;
-      border-radius: 24px;
-    }
+.section-lead {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.82);
+  margin-bottom: 18px;
+}
 
-    .faq-question {
-      width: 100%;
-      background: transparent;
-      color: #fff;
-      border: none;
-      text-align: left;
-      padding: 18px 18px;
-      font-size: 15px;
-      font-weight: 800;
-      line-height: 1.45;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
+.faq-list {
+  display: grid;
+  gap: 14px;
+}
 
-    .faq-question::after {
-      content: "+";
-      font-size: 22px;
-      line-height: 1;
-      color: #d7ae43;
-      flex-shrink: 0;
-    }
+.faq-item {
+  overflow: hidden;
+  border-radius: 24px;
+}
 
-    .faq-item.open .faq-question::after {
-      content: "–";
-    }
+.faq-question {
+  width: 100%;
+  background: transparent;
+  color: #fff;
+  border: none;
+  text-align: left;
+  padding: 18px;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.45;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
 
-    .faq-answer {
-      display: none;
-      padding: 0 18px 18px;
-      color: rgba(255,255,255,0.82);
-      font-size: 14px;
-      line-height: 1.75;
-    }
+.faq-question::after {
+  content: "+";
+  font-size: 22px;
+  line-height: 1;
+  color: #d7ae43;
+  flex-shrink: 0;
+}
 
-    .faq-item.open .faq-answer {
-      display: block;
-    }
+.faq-item.open .faq-question::after {
+  content: "–";
+}
 
-    .note-card {
-      margin-top: 22px;
-      padding: 18px;
-      border-radius: 24px;
-      background: rgba(255, 196, 0, 0.05);
-      border: 1px solid rgba(255, 208, 71, 0.12);
-    }
+.faq-answer {
+  display: none;
+  padding: 0 18px 18px;
+  color: rgba(255,255,255,0.82);
+  font-size: 14px;
+  line-height: 1.75;
+}
 
-    .note-card h3 {
-      font-size: 16px;
-      font-weight: 800;
-      margin-bottom: 10px;
-      color: #f1cb66;
-    }
+.faq-item.open .faq-answer {
+  display: block;
+}
 
-    .note-card p {
-      font-size: 14px;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.8);
-      margin-bottom: 8px;
-    }
+.note-card {
+  margin-top: 22px;
+  padding: 18px;
+  border-radius: 24px;
+  background: rgba(255, 196, 0, 0.05);
+  border: 1px solid rgba(255, 208, 71, 0.12);
+}
 
-    .footer-space {
-      height: 18px;
-    }
+.note-card h3 {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: #f1cb66;
+}
+
+.note-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 8px;
+}
+
+.footer-space {
+  height: 18px;
+}
+
+@media (max-width: 1023px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.03);
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+  }
+
+  .main-nav {
+    display: none;
+    position: static;
+    width: 100%;
+    margin-top: 10px;
+    padding: 0px 0 14px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .main-nav.open {
+    display: flex;
+  }
+
+  .main-nav a {
+    display: block;
+    width: 100%;
+    padding: 14px 0;
+    font-size: 15px;
+    color: #fff;
+  }
+
+  .main-nav a::after {
+    display: none;
+  }
+}
   </style>
 </head>
 <body>
-
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="index.html" class="brand">
-        <div class="brand-logo">
-          <img src="/public/image/GOLD LOGO.png" alt="Gold Group Australia Logo">
-        </div>
-        <div class="brand-text">
-          <strong>Gold Group Australia</strong>
-          <span>Official Website Directory</span>
-        </div>
-      </a>
-
-      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
-        <span></span>
-      </button>
-    </div>
-
-    <nav class="mobile-menu" id="mobileMenu">
-        <a href="/public/companies.html">Companies</a>
-        <a href="/public/about.html">About</a>
-        <a href="/public/support.html">Support</a>
-        <a href="/public/faq.html">FAQ</a>
-        <a href="/public/anti-scam&safety.html">Anti-Scam</a>
-    </nav>
-    
-
-    <div class="ticker-wrap">
-      <div class="ticker">
-        Verified platform network • Trusted access across Australia • Secure and protected environment • Supported by recognised providers • Stable official access directory • 18+ only • Please engage responsibly
+<header class="site-header">
+  <div class="container header-wrap">
+    <a href="index.html" class="brand">
+      <div class="brand-logo">
+        <img src="image/GOLD LOGO.png" alt="Gold Group Australia Logo">
       </div>
-    </div>
-  </header>
+      <div class="brand-text">
+        <strong>Gold Group Australia</strong>
+        <span>Official Website Directory</span>
+      </div>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="companies.html">Companies</a>
+      <a href="about.html">About</a>
+      <a href="support.html">Support</a>
+      <a href="faq.html">FAQ</a>
+      <a href="anti-scam&safety.html">Anti-Scam</a>
+    </nav>
+  </div>
+</header>
+
+<div class="trust-bar">
+  <div class="trust-track">
+    <span>
+      Verified platform network • Trusted access across Australia • Secure and protected environment • Supported by recognised providers • Stable official access directory • 18+ only • Please engage responsibly
+    </span>
+  </div>
+</div>
 
   <main class="container">
     <section class="hero-card">
@@ -529,20 +588,31 @@
     <div class="footer-space"></div>
   </main>
 
-  <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
+<script>
+  const menuToggle = document.getElementById("menuToggle");
+  const mainNav = document.getElementById("mainNav");
 
-    menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
+  if (menuToggle && mainNav) {
+    menuToggle.addEventListener("click", function (e) {
+      e.stopPropagation();
+      mainNav.classList.toggle("open");
     });
 
-    document.querySelectorAll('.faq-question').forEach(button => {
-      button.addEventListener('click', () => {
-        const item = button.parentElement;
-        item.classList.toggle('open');
-      });
+    mainNav.addEventListener("click", function (e) {
+      e.stopPropagation();
     });
-  </script>
+
+    document.addEventListener("click", function () {
+      mainNav.classList.remove("open");
+    });
+  }
+
+  document.querySelectorAll(".faq-question").forEach((button) => {
+    button.addEventListener("click", function (e) {
+      e.stopPropagation();
+      this.parentElement.classList.toggle("open");
+    });
+  });
+</script>
 </body>
 </html>
