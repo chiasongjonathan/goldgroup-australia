@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Companies | Gold Group Australia</title>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #fff;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 196, 0, 0.10), transparent 30%),
+        radial-gradient(circle at 80% 30%, rgba(255, 196, 0, 0.08), transparent 25%),
+        linear-gradient(180deg, #050505 0%, #0b0b0b 55%, #090909 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.16;
+      background-image:
+        radial-gradient(#c99618 1px, transparent 1px),
+        radial-gradient(#c99618 1px, transparent 1px);
+      background-size: 80px 80px, 120px 120px;
+      background-position: 0 0, 40px 40px;
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* HEADER */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(5, 5, 5, 0.96);
+      border-bottom: 1px solid rgba(255, 208, 71, 0.10);
+      backdrop-filter: blur(10px);
+    }
+
+    .header-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      min-height: 72px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      flex-shrink: 0;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .brand-logo img {
+      display: block;
+      width: 54px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .brand-text strong {
+      font-size: 16px;
+      line-height: 1.15;
+      font-weight: 800;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .brand-text span {
+      margin-top: 4px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.78);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-left: auto;
+    }
+
+    .main-nav a {
+      position: relative;
+      font-size: 15px;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .main-nav a:hover {
+      color: #f1cb66;
+    }
+
+    .main-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: #f1cb66;
+      transition: width 0.25s ease;
+    }
+
+    .main-nav a:hover::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+      color: #fff;
+      font-size: 22px;
+      line-height: 1;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    /* TRUST BAR */
+    .trust-bar {
+      width: 100%;
+      overflow: hidden;
+      border-top: 1px solid rgba(255, 208, 71, 0.08);
+      border-bottom: 1px solid rgba(255, 208, 71, 0.08);
+      background: rgba(255, 196, 0, 0.04);
+    }
+
+    .trust-track {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .trust-track span {
+      display: inline-block;
+      padding: 10px 0;
+      font-size: 12px;
+      color: #d9b75b;
+      white-space: nowrap;
+      animation: trustScroll 40s linear infinite;
+    }
+
+    @keyframes trustScroll {
+      from { transform: translateX(100%); }
+      to { transform: translateX(-100%); }
+    }
+
+    /* PAGE CONTENT */
+    .page-content {
+      position: relative;
+      z-index: 1;
+      padding-top: 24px;
+      padding-bottom: 40px;
+      max-width: 980px;
+    }
+
+    .hero-block {
+      padding: 10px 0 8px;
+      margin-bottom: 14px;
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 700;
+      color: #e0bc59;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 28px;
+      line-height: 1.06;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 18px;
+      color: #fff;
+    }
+
+    .lead {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.86);
+      margin-bottom: 14px;
+    }
+
+    .update-line {
+      margin-top: 18px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.68);
+    }
+
+    .section-card {
+      margin-top: 22px;
+      padding: 22px 18px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(19,19,19,0.88), rgba(10,10,10,0.94));
+      border: 1px solid rgba(255, 208, 71, 0.12);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.03),
+        0 0 0 1px rgba(255,255,255,0.02);
+      backdrop-filter: blur(6px);
+    }
+
+    .section-card h2 {
+      font-size: 24px;
+      line-height: 1.08;
+      font-weight: 900;
+      letter-spacing: -0.4px;
+      margin-bottom: 14px;
+      color: #fff;
+    }
+
+    .section-card p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.86);
+      margin-bottom: 14px;
+    }
+
+    .company-block {
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 2px solid rgb(255 255 255 / 28%);
+    }
+
+    .company-block:first-of-type {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+
+    .company-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .company-name {
+      font-size: 19px;
+      font-weight: 900;
+      line-height: 1;
+      margin: 0;
+    }
+
+    .company-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 34px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #fed608, #c68e0d);
+      color: #000;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .note-card {
+      margin-top: 22px;
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(255, 196, 0, 0.05);
+      border: 1px solid rgba(255, 208, 71, 0.12);
+    }
+
+    .note-card h3 {
+      font-size: 16px;
+      font-weight: 800;
+      color: #f1cb66;
+      margin-bottom: 10px;
+    }
+
+    .note-card p {
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 8px;
+    }
+
+    .footer-space {
+      height: 24px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 1023px) {
+      .container {
+        padding: 0 12px;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+        width: 44px;
+        height: 44px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 14px;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.03);
+        color: #fff;
+        font-size: 22px;
+        cursor: pointer;
+      }
+
+      .main-nav {
+        display: none;
+        position: static;
+        width: 100%;
+        margin-top: 10px;
+        padding: 0 0 14px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .main-nav.open {
+        display: flex;
+      }
+
+      .main-nav a {
+        display: block;
+        width: 100%;
+        padding: 14px 0;
+        font-size: 15px;
+        color: #fff;
+      }
+
+      .main-nav a::after {
+        display: none;
+      }
+
+      .page-content {
+        max-width: 100%;
+        padding-top: 18px;
+        padding-bottom: 28px;
+      }
+
+      .company-header {
+        align-items: flex-start;
+      }
+
+      .company-btn {
+        margin-top: 2px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-wrap">
+      <a href="index.html" class="brand">
+        <div class="brand-logo">
+          <img src="image/GOLD LOGO.png" alt="Gold Group Australia Logo">
+        </div>
+        <div class="brand-text">
+          <strong>Gold Group Australia</strong>
+          <span>Official Website Directory</span>
+        </div>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="companies.html">Companies</a>
+        <a href="about.html">About</a>
+        <a href="support.html">Support</a>
+        <a href="faq.html">FAQ</a>
+        <a href="anti-scam&safety.html">Anti-Scam</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="trust-bar">
+    <div class="trust-track">
+      <span>
+        Verified platform network • Trusted access across Australia • Secure and protected environment • Supported by recognised providers • Stable official access directory • 18+ only • Please engage responsibly
+      </span>
+    </div>
+  </div>
+
+  <main>
+    <div class="container page-content">
+      <section class="hero-block">
+        <div class="eyebrow">Official GGA Reference Page</div>
+        <h1>Our Partner Platforms</h1>
+        <p class="lead">
+          Gold Group Australia connects users to a network of verified platform references operating across the Australian entertainment space. Each listed company represents a different platform structure, user pathway, and operational focus within the broader market.
+        </p>
+        <p class="lead">
+          Rather than presenting all platforms in the same way, this directory is intended to give users a clearer understanding of how each company is positioned, what type of environment it represents, and how it fits within the wider network structure.
+        </p>
+        <div class="update-line">Last updated (Sydney): 19/04/2026, 01:06:00</div>
+      </section>
+
+      <section class="section-card">
+        <h2>Platform Overview</h2>
+        <p>
+          The companies listed within Gold Group Australia are presented as partner platform references, each serving a distinct role within the broader Australian platform landscape. While they are connected through the same directory structure, their individual positioning, interaction style, and system focus differ from one another.
+        </p>
+        <p>
+          This allows users to explore multiple platform environments through one central reference point, while still understanding the identity and purpose of each company listed within the network.
+        </p>
+
+        <div class="company-block">
+          <div class="company-header">
+            <div class="company-name">PG9 AUS</div>
+            <a href="index.html#pg9-section" class="company-btn">Login Website</a>
+          </div>
+          <p>
+            PG9 AUS is recognised within the Australian pokies environment as a platform reference associated with a more traditional slot-focused structure. It is positioned for users who prefer a stable and familiar platform style, with a strong emphasis on straightforward navigation, consistent session flow, and a broad mix of standard game formats.
+          </p>
+          <p>
+            Within the wider market, PG9 AUS reflects the segment of platform access that prioritises clarity, familiarity, and a more classic pokies-oriented environment. This makes it one of the more recognisable references for users who are more comfortable with conventional platform behaviour and less interested in heavily layered structures.
+          </p>
+        </div>
+
+        <div class="company-block">
+          <div class="company-header">
+            <div class="company-name">H4WIN AUS</div>
+            <a href="index.html#h4win-section" class="company-btn">Login Website</a>
+          </div>
+          <p>
+            H4WIN AUS represents a broader multi-category platform reference within the network. Rather than being tied to a single style of interaction, it is positioned as a more flexible environment for users who prefer variety and wider platform coverage under one structure.
+          </p>
+          <p>
+            Its place within the Australian landscape is more aligned with users who engage across multiple interface types and who prefer a platform identity that feels more expansive. In that sense, H4WIN AUS functions as a broader access reference rather than a narrowly defined single-category environment.
+          </p>
+        </div>
+
+        <div class="company-block">
+          <div class="company-header">
+            <div class="company-name">RR4WIN AUS</div>
+            <a href="index.html#rr4win-section" class="company-btn">Login Website</a>
+          </div>
+          <p>
+            RR4WIN AUS is positioned within a more active and engagement-driven segment of the platform market. It is presented as a reference for users who prefer a more responsive environment, with a stronger emphasis on continuity, flow, and a faster style of ongoing interaction.
+          </p>
+          <p>
+            Compared with more conventional platform structures, RR4WIN AUS reflects a more dynamic side of the network. Its market identity is tied less to static familiarity and more to an environment where users are likely to value movement, pace, and a stronger sense of progression across repeated sessions.
+          </p>
+        </div>
+
+        <div class="company-block">
+          <div class="company-header">
+            <div class="company-name">BOOMERANG AUS</div>
+            <a href="index.html#boomerang-section" class="company-btn">Login Website</a>
+          </div>
+          <p>
+            Boomerang AUS is presented within the directory as a platform reference associated with layered engagement and longer-term interaction patterns. Its positioning is shaped less by a single category identity and more by the way users move through the platform over time.
+          </p>
+          <p>
+            Within the Australian reference landscape, Boomerang AUS reflects a more structured and evolving model, suited to users who prefer platforms that feel more adaptive and retention-oriented. This gives it a distinct role within the network, particularly for users who are more responsive to system-driven continuity rather than isolated short-form interaction.
+          </p>
+        </div>
+      </section>
+
+      <div class="note-card">
+        <h3>Directory Notice</h3>
+        <p>This page is intended as a structured overview of partner platform references listed within Gold Group Australia.</p>
+        <p>Users should always confirm official access points through the latest published directory information.</p>
+        <p>18+ only. Please follow local laws and engage responsibly at all times.</p>
+      </div>
+
+      <div class="footer-space"></div>
+    </div>
+  </main>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", function (e) {
+        e.stopPropagation();
+        mainNav.classList.toggle("open");
+      });
+
+      mainNav.addEventListener("click", function (e) {
+        e.stopPropagation();
+      });
+
+      document.addEventListener("click", function () {
+        mainNav.classList.remove("open");
+      });
+    }
+  </script>
+</body>
+</html>

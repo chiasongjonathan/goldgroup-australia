@@ -1,3 +1,5 @@
+console.log("SCRIPT LOADED");
+
 const menuToggle = document.getElementById("menuToggle");
 const mainNav = document.getElementById("mainNav");
 const lastUpdateEl = document.getElementById("lastUpdate");
@@ -27,7 +29,11 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
-const API_URL = "/api/status";
+const API_URL =
+  location.hostname === "127.0.0.1" || location.hostname === "localhost"
+    ? "https://goldgroupaustralia.com/api/status"
+    : "/api/status";
+
 const FRONTEND_REFRESH_MS = 30 * 1000;
 
 function formatSydneyTime(timestamp) {
@@ -42,14 +48,25 @@ function formatSydneyTime(timestamp) {
       second: "2-digit",
       hour12: false
     }).format(new Date(timestamp));
-  } catch {
+  } catch (err) {
     return new Date(timestamp).toLocaleString();
   }
 }
 
-function updateLastUpdate(timestamp) {
+function updateLastUpdate(updatedAt, updatedAtSydney) {
   if (!lastUpdateEl) return;
-  lastUpdateEl.textContent = `Last updated (Sydney): ${formatSydneyTime(timestamp)}`;
+
+  if (updatedAtSydney) {
+    lastUpdateEl.textContent = `Last updated (Sydney): ${updatedAtSydney}`;
+    return;
+  }
+
+  if (updatedAt) {
+    lastUpdateEl.textContent = `Last updated (Sydney): ${formatSydneyTime(updatedAt)}`;
+    return;
+  }
+
+  lastUpdateEl.textContent = "Last updated: --";
 }
 
 function normalizeStatus(status) {
@@ -223,6 +240,8 @@ function updateInstallButtons(companyMap) {
 function renderPayload(payload) {
   const companyMap = payload.companies || {};
 
+  updateLastUpdate(payload.updatedAt, payload.updatedAtSydney);
+
   document.querySelectorAll(".company-block").forEach(block => {
     const companyName = block.querySelector("h3")?.textContent?.trim();
     if (!companyName) return;
@@ -232,7 +251,6 @@ function renderPayload(payload) {
   });
 
   updateInstallButtons(companyMap);
-  updateLastUpdate(payload.updatedAt || Date.now());
 }
 
 function renderError() {
@@ -256,7 +274,7 @@ function renderError() {
     `;
   });
 
-  updateLastUpdate(Date.now());
+  updateLastUpdate(null, null);
 }
 
 async function fetchDomainStatus() {
@@ -271,6 +289,7 @@ async function fetchDomainStatus() {
     }
 
     const payload = await res.json();
+    console.log("API payload:", payload);
     renderPayload(payload);
   } catch (error) {
     console.error("Domain status API error:", error);
