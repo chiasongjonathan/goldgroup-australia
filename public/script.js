@@ -216,21 +216,23 @@ function updateInstallButtons(companyMap) {
   document.querySelectorAll(".company-block").forEach(block => {
     const companyName = block.querySelector("h3")?.textContent?.trim();
     const installBtn = block.querySelector(".install-btn");
+
     if (!companyName || !installBtn) return;
 
-    const domains = companyMap[companyName] || [];
-    const activeDomains = sortDomains(domains).filter(d => normalizeStatus(d.status) === "active");
+    if (!Object.prototype.hasOwnProperty.call(companyMap, companyName)) {
+      return;
+    }
 
-    if (activeDomains.length) {
-      installBtn.href = activeDomains[0].url;
-      installBtn.target = "_blank";
-      installBtn.rel = "noopener noreferrer";
+    const domains = companyMap[companyName] || [];
+    const hasActiveDomain = sortDomains(domains).some(d => normalizeStatus(d.status) === "active");
+
+    installBtn.target = "_blank";
+    installBtn.rel = "noopener noreferrer";
+
+    if (hasActiveDomain) {
       installBtn.style.pointerEvents = "auto";
       installBtn.style.opacity = "1";
     } else {
-      installBtn.href = "#";
-      installBtn.removeAttribute("target");
-      installBtn.removeAttribute("rel");
       installBtn.style.pointerEvents = "none";
       installBtn.style.opacity = "0.55";
     }

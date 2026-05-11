@@ -3,90 +3,100 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Support, Complaints & Reports | Gold Group Australia</title>
-<meta name="description" content="Contact Gold Group Australia for directory enquiries, complaints, suspicious links, access clarification, and general support matters.">
-<link rel="icon" type="image/png" href="/image/GOLD%20LOGO.png">
-<link rel="icon" sizes="32x32" href="/image/GOLD%20LOGO.png">
-<link rel="icon" sizes="96x96" href="/image/GOLD%20LOGO.png">
+
+  <title>Support | Gold Group Australia</title>
+  <meta name="description" content="Contact Gold Group Australia support for directory enquiries, official access clarification, suspicious website reports, fairness concerns and listed partner platform guidance." />
+
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #050505;
+      --gold: #d7b04c;
+      --gold-2: #f0d487;
+      --text: #ffffff;
+      --muted: rgba(255,255,255,.78);
+      --soft: rgba(255,255,255,.10);
+      --card: rgba(12,12,12,.88);
+      --max: 1220px;
+    }
 
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  html {
-  scroll-behavior: smooth;
-  background: #050505;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #fff;
-    background-color: #050505;
-    background-image:
-        radial-gradient(circle at 20% 20%, rgba(255, 196, 0, 0.10), transparent 30%),
-        radial-gradient(circle at 80% 30%, rgba(255, 196, 0, 0.08), transparent 25%),
-        radial-gradient(rgba(201, 150, 24, 0.18) 1px, transparent 1px),
-        radial-gradient(rgba(201, 150, 24, 0.10) 1px, transparent 1px),
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 18% 22%, rgba(255, 196, 0, 0.10), transparent 30%),
+        radial-gradient(circle at 82% 30%, rgba(255, 196, 0, 0.08), transparent 26%),
         linear-gradient(180deg, #050505 0%, #0b0b0b 55%, #090909 100%);
-    background-size:
-        auto,
-        auto,
-        80px 80px,
-        120px 120px,
-        auto;
-    background-position:
-        0 0,
-        0 0,
-        0 0,
-        40px 40px,
-        0 0;
-    background-repeat: no-repeat, no-repeat, repeat, repeat, no-repeat;
-    min-height: 100dvh;
-    overflow-x: hidden;
-    position: relative;
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.7;
+      letter-spacing: .01em;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .14;
+      background-image:
+        radial-gradient(#c99618 1px, transparent 1px),
+        radial-gradient(#c99618 1px, transparent 1px);
+      background-size: 80px 80px, 120px 120px;
+      background-position: 0 0, 40px 40px;
+      z-index: 0;
     }
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
     }
 
-    a:visited,
-    a:hover,
-    a:active {
-      color: inherit;
+    .page-wrap {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      min-height: 100vh;
     }
 
     .container {
-      width: 100%;
-      max-width: 1280px;
+      width: min(var(--max), calc(100% - 24px));
       margin: 0 auto;
-      padding: 0 24px;
     }
 
-    /* HEADER */
+    /* ================= HEADER ================= */
+
     .site-header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(5, 5, 5, 0.96);
-      border-bottom: 1px solid rgba(255, 208, 71, 0.10);
+      background: rgba(5,5,5,.90);
       backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
     }
 
     .header-wrap {
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
       gap: 16px;
-      min-height: 72px;
+      padding: 10px 0;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       min-width: 0;
       flex-shrink: 0;
     }
@@ -94,73 +104,61 @@
     .brand-logo {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       flex-shrink: 0;
     }
 
     .brand-logo img {
-      display: block;
-      width: 54px;
+      width: 56px;
       height: auto;
       object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
     }
 
     .brand-text {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
       min-width: 0;
     }
 
     .brand-text strong {
-      font-size: 16px;
-      line-height: 1.15;
+      display: block;
+      font-size: 17px;
       font-weight: 800;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      line-height: 1.15;
       color: #fff;
+      white-space: nowrap;
     }
 
     .brand-text span {
-      margin-top: 4px;
+      display: block;
+      margin-top: 2px;
       font-size: 12px;
-      color: rgba(255,255,255,0.78);
+      color: rgba(255,255,255,.72);
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .main-nav {
       display: flex;
       align-items: center;
-      gap: 28px;
-      margin-left: auto;
+      justify-content: flex-end;
+      gap: 22px;
+      flex-wrap: wrap;
     }
 
     .main-nav a {
-      position: relative;
-      font-size: 15px;
-      color: rgba(255,255,255,0.92);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: #ece4cf;
+      line-height: 1;
+      white-space: nowrap;
+      transition: color .18s ease;
     }
 
     .main-nav a:hover {
-      color: #f1cb66;
-    }
-
-    .main-nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 0;
-      height: 2px;
-      background: #f1cb66;
-      transition: width 0.25s ease;
-    }
-
-    .main-nav a:hover::after {
-      width: 100%;
+      color: var(--gold-2);
     }
 
     .menu-toggle {
@@ -168,193 +166,239 @@
       width: 44px;
       height: 44px;
       border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
       color: #fff;
       font-size: 22px;
-      line-height: 1;
-      align-items: center;
-      justify-content: center;
       cursor: pointer;
+      flex-shrink: 0;
     }
 
-    /* TRUST BAR */
-    .trust-bar {
-      width: 100%;
-      overflow: hidden;
-      border-top: 1px solid rgba(255, 208, 71, 0.08);
-      border-bottom: 1px solid rgba(255, 208, 71, 0.08);
-      background: rgba(255, 196, 0, 0.04);
-    }
+    /* ================= TICKER ================= */
 
-    .trust-track {
-      width: 100%;
+    .ticker-wrap {
       overflow: hidden;
+      border-top: 1px solid rgba(255,208,71,.08);
+      border-bottom: 1px solid rgba(255,208,71,.08);
+      background: rgba(255,196,0,.04);
       white-space: nowrap;
     }
 
-    .trust-track span {
+    .ticker {
       display: inline-block;
-      padding: 10px 0;
+      white-space: nowrap;
+      padding: 9px 0;
       font-size: 12px;
       color: #d9b75b;
-      white-space: nowrap;
-      animation: trustScroll 40s linear infinite;
+      animation: tickerMove 40s linear infinite;
     }
 
-    @keyframes trustScroll {
+    @keyframes tickerMove {
       from { transform: translateX(100%); }
       to { transform: translateX(-100%); }
     }
 
-    /* PAGE CONTENT */
-    .page-content {
-      position: relative;
-      z-index: 1;
-      padding-top: 24px;
-      padding-bottom: 40px;
-      max-width: 980px;
+    /* ================= CONTENT ================= */
+
+    .content {
+      width: min(var(--max), calc(100% - 24px));
+      margin: 0 auto;
+      padding: 42px 0 56px;
     }
 
-    .hero-block {
-      padding: 8px 0 12px;
-      margin-bottom: 10px;
+    .hero-card,
+    .content-card,
+    .note-card {
+      width: 100%;
+      max-width: 980px;
+      background: linear-gradient(180deg, rgba(19,19,19,.88), rgba(10,10,10,.94));
+      border: 1px solid rgba(255,208,71,.12);
+      border-radius: 30px;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.03),
+        0 0 0 1px rgba(255,255,255,.02);
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-card {
+      padding: 34px 30px;
+      margin-bottom: 22px;
+    }
+
+    .content-card,
+    .note-card {
+      padding: 30px;
+      margin-bottom: 22px;
     }
 
     .eyebrow {
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 800;
       color: #e0bc59;
       margin-bottom: 12px;
     }
 
     h1 {
-      font-size: 28px;
-      line-height: 1.08;
+      font-size: clamp(38px, 5vw, 64px);
+      line-height: 1.02;
       font-weight: 900;
-      letter-spacing: -0.5px;
+      letter-spacing: -1px;
       margin-bottom: 18px;
       color: #fff;
+      max-width: 850px;
     }
 
-    .lead {
-      font-size: 15px;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.88);
-      margin-bottom: 14px;
-    }
-
-    .section-card {
-      margin-top: 20px;
-      padding: 22px 18px;
-      border-radius: 28px;
-      background: linear-gradient(180deg, rgba(19,19,19,0.88), rgba(10,10,10,0.94));
-      border: 1px solid rgba(255, 208, 71, 0.12);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.03),
-        0 0 0 1px rgba(255,255,255,0.02);
-      backdrop-filter: blur(6px);
-    }
-
-    .section-card h2 {
-      font-size: 23px;
-      line-height: 1.1;
+    h2 {
+      font-size: 32px;
+      line-height: 1.08;
       font-weight: 900;
-      letter-spacing: -0.3px;
+      letter-spacing: -.5px;
       margin-bottom: 14px;
       color: #fff;
     }
 
-    .section-card h3 {
-      font-size: 16px;
-      font-weight: 800;
-      margin-top: 18px;
-      margin-bottom: 10px;
+    h3 {
+      font-size: 18px;
+      line-height: 1.2;
+      font-weight: 900;
       color: #f1cb66;
+      margin-bottom: 10px;
     }
 
-    .section-card p {
-      font-size: 15px;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.88);
+    p {
+      font-size: 16px;
+      line-height: 1.85;
+      color: rgba(255,255,255,.84);
       margin-bottom: 14px;
+      max-width: 880px;
     }
 
     .email-link {
       display: inline-block;
-      color: #f1cb66 !important;
-      font-weight: 800;
+      margin: 4px 0 10px;
+      color: #f1cb66;
+      font-size: 18px;
+      font-weight: 900;
       text-decoration: underline;
       word-break: break-word;
-      margin-bottom: 8px;
     }
 
     .small-note {
-      font-size: 13px;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.68);
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(255,255,255,.68);
       margin-bottom: 0;
     }
 
     .support-actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-wrap: wrap;
       gap: 12px;
-      margin-top: 18px;
+      margin-top: 20px;
     }
 
     .support-btn {
-      min-height: 48px;
+      min-height: 46px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      border-radius: 16px;
+      border-radius: 999px;
       font-size: 14px;
-      font-weight: 800;
-      padding: 0 14px;
-      background: linear-gradient(90deg, #9a7411 0%, #d8ad2c 55%, #c9980c 100%);
-      color: #000 !important;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
+      font-weight: 900;
+      padding: 0 20px;
+      background: linear-gradient(135deg, #fed608, #c68e0d);
+      color: #000;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.18);
+      transition: transform .18s ease, filter .18s ease;
     }
 
-    ul.support-list {
-      padding-left: 18px;
-      margin-top: 8px;
+    .support-btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
     }
 
-    ul.support-list li {
-      margin-bottom: 10px;
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .support-box {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255,196,0,.045);
+      border: 1px solid rgba(255,208,71,.10);
+    }
+
+    .support-box strong {
+      display: block;
+      color: #f1cb66;
       font-size: 15px;
-      line-height: 1.75;
-      color: rgba(255,255,255,0.88);
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .support-box span {
+      display: block;
+      color: rgba(255,255,255,.80);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .support-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .support-item {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,196,0,.045);
+      border: 1px solid rgba(255,208,71,.10);
+    }
+
+    .support-item strong {
+      display: block;
+      color: #f1cb66;
+      font-size: 15px;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    .support-item span {
+      display: block;
+      color: rgba(255,255,255,.80);
+      font-size: 14px;
+      line-height: 1.7;
     }
 
     .faq-list {
       display: grid;
       gap: 12px;
+      margin-top: 16px;
     }
 
     .faq-item {
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      padding-bottom: 12px;
-    }
-
-    .faq-item:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
+      border-radius: 18px;
+      background: rgba(255,255,255,.025);
+      border: 1px solid rgba(255,255,255,.07);
+      overflow: hidden;
     }
 
     .faq-question {
       width: 100%;
+      min-height: 58px;
       background: transparent;
       color: #fff;
       border: none;
       text-align: left;
-      padding: 0 0 10px;
-      font-size: 16px;
-      font-weight: 800;
-      line-height: 1.55;
+      padding: 16px 18px;
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.45;
       cursor: pointer;
       display: flex;
       align-items: flex-start;
@@ -377,10 +421,10 @@
 
     .faq-answer {
       display: none;
-      color: rgba(255,255,255,0.82);
+      color: rgba(255,255,255,.82);
       font-size: 14px;
       line-height: 1.8;
-      padding-right: 20px;
+      padding: 0 18px 18px;
     }
 
     .faq-item.open .faq-answer {
@@ -391,119 +435,292 @@
       height: 24px;
     }
 
-    /* MOBILE */
-    @media (max-width: 1023px) {
+    /* ================= DESKTOP: 1025px+ ================= */
+
+      @media (min-width: 1025px) {
+        .content {
+          width: min(980px, calc(100% - 48px));
+          margin: 0 auto;
+          padding-top: 52px;
+        }
+
+        .hero-card,
+        .content-card,
+        .note-card {
+          max-width: 980px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+
+    /* ================= TABLET: 768px - 1024px ================= */
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .container,
+      .content {
+        width: min(760px, calc(100% - 36px));
+      }
+
+      .header-wrap {
+        min-height: 72px;
+      }
+
+      .main-nav {
+        gap: 15px;
+      }
+
+      .main-nav a {
+        font-size: 13px;
+      }
+
+      .brand-logo img {
+        width: 54px;
+      }
+
+      .brand-text strong {
+        font-size: 16px;
+      }
+
+      .hero-card,
+      .content-card,
+      .note-card {
+        max-width: 760px;
+      }
+
+      .hero-card {
+        padding: 30px 28px;
+      }
+
+      .content-card,
+      .note-card {
+        padding: 28px;
+        border-radius: 28px;
+      }
+
+      h1 {
+        font-size: 44px;
+      }
+
+      h2 {
+        font-size: 30px;
+      }
+
+      p {
+        font-size: 16px;
+        max-width: 720px;
+      }
+    }
+
+    /* ================= MOBILE: 0 - 767px ================= */
+
+    @media (max-width: 767px) {
       .container {
+        width: 100%;
         padding: 0 12px;
       }
 
+      .header-wrap {
+        min-height: 68px;
+        flex-wrap: wrap;
+        padding: 8px 12px;
+      }
+
+      .brand {
+        flex: 1;
+      }
+
+      .brand-logo img {
+        width: 52px;
+      }
+
+      .brand-text strong {
+        font-size: 15px;
+      }
+
+      .brand-text span {
+        font-size: 11px;
+      }
+
       .menu-toggle {
-        display: inline-flex;
-        width: 44px;
-        height: 44px;
-        align-items: center;
-        justify-content: center;
-        border-radius: 14px;
-        border: 1px solid rgba(255,255,255,0.12);
-        background: rgba(255,255,255,0.03);
-        color: #fff;
-        font-size: 22px;
-        cursor: pointer;
+        display: grid;
+        place-items: center;
       }
 
       .main-nav {
         display: none;
-        position: static;
         width: 100%;
-        margin-top: 10px;
-        padding: 0 0 14px;
         flex-direction: column;
         align-items: flex-start;
         gap: 0;
-        background: transparent;
-        border: none;
-        border-radius: 0;
-        box-shadow: none;
+        padding: 6px 0 8px;
       }
 
-      .main-nav.open {
+      .main-nav.show {
         display: flex;
       }
 
       .main-nav a {
         display: block;
         width: 100%;
-        padding: 14px 0;
+        padding: 12px 0;
         font-size: 15px;
-        color: #fff;
       }
 
-      .main-nav a::after {
-        display: none;
+      .ticker {
+        font-size: 11px;
+        padding: 8px 0;
       }
 
-      .page-content {
-        max-width: 100%;
-        padding-top: 18px;
-        padding-bottom: 28px;
+      .content {
+        width: 100%;
+        padding: 24px 14px 42px;
+      }
+
+      .hero-card,
+      .content-card,
+      .note-card {
+        max-width: none;
+        border-radius: 24px;
+      }
+
+      .hero-card {
+        padding: 22px 16px;
+        margin-bottom: 18px;
+      }
+
+      .content-card,
+      .note-card {
+        padding: 20px 16px;
+        margin-bottom: 18px;
+      }
+
+      .eyebrow {
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
+
+      h1 {
+        font-size: 28px;
+        line-height: 1.06;
+        margin-bottom: 16px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      h3 {
+        font-size: 16px;
+      }
+
+      p {
+        font-size: 14px;
+        line-height: 1.78;
+        margin-bottom: 13px;
+      }
+
+      .email-link {
+        font-size: 15px;
       }
 
       .support-actions {
+        display: grid;
         grid-template-columns: 1fr;
+      }
+
+      .support-btn {
+        width: 100%;
+      }
+
+      .support-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .support-box,
+      .support-item {
+        padding: 14px;
+        border-radius: 16px;
+      }
+
+      .support-box strong,
+      .support-item strong {
+        font-size: 14px;
+      }
+
+      .support-box span,
+      .support-item span,
+      .faq-answer {
+        font-size: 13px;
+      }
+
+      .faq-question {
+        min-height: 54px;
+        padding: 14px;
+        font-size: 14px;
+      }
+
+      .faq-answer {
+        padding: 0 14px 14px;
       }
     }
   </style>
 </head>
+
 <body>
-  <header class="site-header">
-    <div class="container header-wrap">
-      <a href="index.html" class="brand">
-        <div class="brand-logo">
-          <img src="image/GOLD LOGO.png" alt="Gold Group Australia Logo">
+  <div class="page-wrap">
+    <header class="site-header">
+      <div class="container header-wrap">
+        <a href="/" class="brand">
+          <div class="brand-logo">
+            <img src="image/GOLD LOGO.png" alt="Gold Group Australia Logo">
+          </div>
+          <div class="brand-text">
+            <strong>Gold Group Australia</strong>
+            <span>Official Website Directory</span>
+          </div>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+
+        <nav class="main-nav" id="mainNav">
+          <a href="/companies">Companies</a>
+          <a href="/about">About</a>
+          <a href="/support">Support</a>
+          <a href="/faq">FAQ</a>
+          <a href="/anti-scam">Anti-Scam</a>
+        </nav>
+      </div>
+
+      <div class="ticker-wrap">
+        <div class="ticker">
+          Verified platform network • Trusted access across Australia • Secure and protected environment • Supported by recognised providers • Stable official access directory • 18+ only • Please engage responsibly
         </div>
-        <div class="brand-text">
-          <strong>Gold Group Australia</strong>
-         <span>Official Aussie Pokies Platform</span>
-        </div>
-      </a>
+      </div>
+    </header>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
-
-      <nav class="main-nav" id="mainNav">
-        <a href="companies.html">Companies</a>
-        <a href="about.html">About</a>
-        <a href="support.html">Support</a>
-        <a href="faq.html">FAQ</a>
-        <a href="anti-scam&safety.html">Anti-Scam</a>
-      </nav>
-    </div>
-  </header>
-
-  <div class="trust-bar">
-    <div class="trust-track">
-      <span>
-        Verified platform network • Trusted access across Australia • Secure and protected environment • Supported by recognised providers • Stable official access directory • 18+ only • Please engage responsibly
-      </span>
-    </div>
-  </div>
-
-  <main>
-    <div class="container page-content">
-      <section class="hero-block">
+    <main class="content">
+      <section class="hero-card">
         <div class="eyebrow">Official GGA Reference Page</div>
         <h1>Support & Assistance</h1>
-        <p class="lead">
-          Gold Group Australia provides a central support point for users who need assistance, clarification, or a formal channel to raise concerns relating to the directory, listed platform references, or matters within the broader network scope.
+
+        <p>
+          Gold Group Australia provides a central support point for users who need assistance, access clarification, complaint direction, suspicious link review, or general guidance relating to the official directory and its listed partner platform references.
         </p>
-        <p class="lead">
-          If something feels unclear, unsafe, misleading, unfair, or inconsistent with what you expected, you may contact us directly for review. Our support channel exists to provide a recognised point of contact for users who need a clearer path for enquiries, complaints, reports, or general assistance.
+
+        <p>
+          The purpose of this support page is to give users a recognised contact path when something feels unclear, misleading, unsafe, unfair, or inconsistent with the information displayed within the Gold Group Australia network. Users may contact us for general enquiries, formal reports, directory-level clarification, or broader network concerns.
+        </p>
+
+        <p>
+          Gold Group Australia does not replace the direct support channels of each partner platform. However, this page exists to help users understand where to raise matters, how to report suspicious access points, and how to contact the directory when a concern relates to official visibility, platform references, or network-level clarity.
         </p>
       </section>
 
-      <section class="section-card">
+      <section class="content-card">
         <h2>Contact Support</h2>
+
         <p>
-          For general enquiries, complaints, reports, fairness concerns, access clarification, suspicious links, or any other matter you believe should be reviewed within the Gold Group Australia network, please contact:
+          For general enquiries, complaints, reports, fairness concerns, access clarification, suspicious links, or any other matter that you believe should be reviewed within the Gold Group Australia network, please contact our support team through the official email below.
         </p>
 
         <a class="email-link" href="mailto:support@goldgroupaustralia.com">
@@ -511,57 +728,135 @@
         </a>
 
         <p class="small-note">
-          Click the email above to contact us directly. Standard response time applies within business hours.
+          Please include the platform name, the relevant link or page, a short description of the issue, and any screenshots or supporting details that may help us understand the situation clearly.
         </p>
 
         <div class="support-actions">
-          <a href="mailto:support@goldgroupaustralia.com" class="support-btn">Contact Support</a>
-          <a href="mailto:compliance@goldgroupaustralia.com" class="support-btn">File Report</a>
+          <a href="mailto:support@goldgroupaustralia.com?subject=Gold%20Group%20Australia%20Support%20Request" class="support-btn">
+            Contact Support
+          </a>
+
+          <a href="mailto:support@goldgroupaustralia.com?subject=Gold%20Group%20Australia%20Report%20Submission" class="support-btn">
+            File Report
+          </a>
         </div>
       </section>
 
-      <section class="section-card">
+      <section class="content-card">
         <h2>What You Can Contact Us About</h2>
+
         <p>
-          Gold Group Australia support is available for a broad range of matters connected to the directory and its listed references. Users may contact us if they need guidance, wish to raise a concern, or simply want a matter reviewed.
+          Gold Group Australia support is available for matters connected to the directory, official access visibility, listed partner references, and broader network-level concerns. Users may contact us when they need guidance, wish to raise a concern, or want a matter reviewed through a central reference channel.
         </p>
 
-        <ul class="support-list">
-          <li>General enquiries regarding Gold Group Australia and the official website directory</li>
-          <li>Clarification on listed platform references or official access points</li>
-          <li>Concerns that a website, link, or access point may be unofficial, misleading, or suspicious</li>
-          <li>Complaints relating to fairness, transparency, or user experience within the network scope</li>
-          <li>Situations where a user feels uncertain, unsafe, or uncomfortable about a platform reference</li>
-          <li>Reports of unusual behaviour, suspicious activity, or inconsistencies that appear outside normal expectations</li>
-          <li>Questions about whether a listed platform or access point appears legitimate within the directory structure</li>
-          <li>Feedback, concerns, or any matter that the user believes should be brought to attention</li>
-        </ul>
+        <div class="support-list">
+          <div class="support-item">
+            <strong>Official access clarification</strong>
+            <span>Contact us when you are unsure whether a website, link, access point, or partner reference is connected to the official Gold Group Australia directory.</span>
+          </div>
 
-        <h3>Fairness & User Concerns</h3>
+          <div class="support-item">
+            <strong>Suspicious website or link reports</strong>
+            <span>Report copied websites, unknown links, suspicious pages, fake support contacts, misleading advertisements, or any source that appears to imitate a listed partner platform.</span>
+          </div>
+
+          <div class="support-item">
+            <strong>Fairness and transparency concerns</strong>
+            <span>Raise concerns if you believe a situation involving a listed platform has been unclear, unfair, inconsistent, or not communicated in a transparent way.</span>
+          </div>
+
+          <div class="support-item">
+            <strong>Directory information enquiries</strong>
+            <span>Ask questions about how Gold Group Australia presents partner platforms, access information, backup domains, support direction, and directory notices.</span>
+          </div>
+
+          <div class="support-item">
+            <strong>Network-level complaints</strong>
+            <span>Submit complaints or reports that you believe should be reviewed at a broader directory or network level rather than only through a single platform page.</span>
+          </div>
+
+          <div class="support-item">
+            <strong>General feedback</strong>
+            <span>Send feedback about page clarity, access structure, website usability, partner listings, anti-scam messaging, or anything that may improve the directory experience.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-card">
+        <h2>Support Scope</h2>
+
         <p>
-          If you feel that a situation has been unclear, unfair, misleading, or not handled in a way that matches your expectations, you may contact us for review. Support submissions do not need to fit into a narrow category. If something feels wrong, that alone is a valid reason to raise it.
+          Gold Group Australia operates as a directory and official reference page. The support channel is intended to help users with matters that relate to the directory, recognised partner listings, access visibility, suspicious sources, and general network-level clarity.
         </p>
 
-        <h3>Safety & Suspicious Activity</h3>
         <p>
-          If you have concerns about safety, authenticity, suspicious website behaviour, misleading links, or any unusual access point, you should report it directly. Gold Group Australia takes the visibility of official references seriously and encourages users to report anything that does not look right.
+          Partner platforms operate independently and manage their own internal systems. Account-specific matters such as login access, account verification, deposit records, withdrawal requests, gameplay records, promotion eligibility, or platform-side balance enquiries are generally handled by the respective partner platform directly.
+        </p>
+
+        <p>
+          Even when a matter belongs to a specific partner platform, users may still contact Gold Group Australia if they are unsure where to go, need help identifying the correct access point, or wish to raise a broader concern about official visibility, fairness, or suspicious activity.
+        </p>
+
+        <div class="support-grid">
+          <div class="support-box">
+            <strong>Handled by GGA support</strong>
+            <span>Directory questions, official access clarification, suspicious link reports, fake page concerns, network-level complaints, and general directory feedback.</span>
+          </div>
+
+          <div class="support-box">
+            <strong>Handled by partner platforms</strong>
+            <span>Account login, deposits, withdrawals, KYC verification, gameplay records, bonuses, transaction status, and user account management.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-card">
+        <h2>How to Submit a Clear Report</h2>
+
+        <p>
+          To help us review a support request or report efficiently, please provide clear and direct information. The more complete your message is, the easier it is for the relevant team to understand what happened and determine the correct direction.
+        </p>
+
+        <div class="support-list">
+          <div class="support-item">
+            <strong>1. Platform or page involved</strong>
+            <span>Tell us which listed platform, website, domain, support contact, advertisement, or directory page your concern relates to.</span>
+          </div>
+
+          <div class="support-item">
+            <strong>2. Short issue summary</strong>
+            <span>Explain what happened in simple terms, including what you expected and what seemed unclear, suspicious, unfair, or inconsistent.</span>
+          </div>
+
+          <div class="support-item">
+            <strong>3. Relevant links or screenshots</strong>
+            <span>Include any website link, screenshot, message, email, Telegram contact, WhatsApp contact, or other reference that may help identify the issue.</span>
+          </div>
+
+          <div class="support-item">
+            <strong>4. Contact details for reply</strong>
+            <span>Use an email address that you can access so the support team can reply or request further information if required.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="note-card">
+        <h3>Important Support Notice</h3>
+
+        <p>
+          Gold Group Australia provides directory-level support and general reference guidance. It does not guarantee the outcome of any partner platform review, account decision, payment process, verification result, or internal platform action.
+        </p>
+
+        <p>
+          Users should always contact the relevant partner platform directly for account-specific matters. Gold Group Australia may assist with directory clarification, suspicious link reporting, access visibility, and broader network-level concerns where applicable.
+        </p>
+
+        <p>
+          18+ only. Please engage responsibly, follow applicable local laws, and review each platform’s own terms before using any listed service.
         </p>
       </section>
 
-      <section class="section-card">
-        <h2>Important Support Notice</h2>
-        <p>
-          Gold Group Australia operates as a directory and reference platform. It provides a structured listing environment and a central support contact for matters within the network scope.
-        </p>
-        <p>
-          Partner platforms operate independently. This means account-specific matters such as login issues, registration details, account verification, platform-side balances, deposits, or withdrawals should be directed to the respective platform through its own official support channel where applicable.
-        </p>
-        <p>
-          Even where a matter may ultimately belong to a platform directly, users may still contact Gold Group Australia if they require clarification, feel uncertain, or wish to formally raise a concern regarding the broader network experience.
-        </p>
-      </section>
-
-      <section class="section-card">
+      <section class="content-card">
         <h2>Support FAQ</h2>
 
         <div class="faq-list">
@@ -575,109 +870,58 @@
           <div class="faq-item">
             <button class="faq-question">Can I report a website or link that looks suspicious?</button>
             <div class="faq-answer">
-              Yes. If you believe a website, access point, or shared link may be unofficial, misleading, unsafe, or inconsistent with the Gold Group Australia directory, you should report it through the support email for review.
+              Yes. If you believe a website, access point, advertisement, shared link, or support contact may be unofficial, misleading, unsafe, or inconsistent with the Gold Group Australia directory, you should report it through the support email for review.
             </div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question">What if I feel a platform has treated me unfairly?</button>
             <div class="faq-answer">
-              You may submit a complaint for review. If you feel that a situation has not been handled fairly, clearly, or transparently, Gold Group Australia support can receive the matter and review it within the network scope.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">Can I contact support if I do not feel safe using a listed platform or link?</button>
-            <div class="faq-answer">
-              Yes. Any safety concern, uncertainty, or suspicious experience should be reported. If you are unsure whether a listed access point is appropriate or authentic, contact support before proceeding further.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">Do I need a specific reason before contacting support?</button>
-            <div class="faq-answer">
-              No. Support is not limited to one type of issue. General enquiries, uncertainty, suspicious behaviour, fairness concerns, complaints, or clarification requests are all valid reasons to contact Gold Group Australia.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">Can I contact support for complaints, reports, and general enquiries all in one place?</button>
-            <div class="faq-answer">
-              Yes. Gold Group Australia support is intended to provide one central point of contact for different types of submissions, including complaints, reports, enquiries, and broader network concerns.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">What if I am not sure whether my issue belongs to Gold Group Australia or the platform directly?</button>
-            <div class="faq-answer">
-              You may still contact Gold Group Australia support. If your matter is better handled by the respective platform, you can be guided accordingly. If it falls within the broader directory or network scope, it may be reviewed directly.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">Can I contact support about fairness, transparency, or platform conduct?</button>
-            <div class="faq-answer">
-              Yes. Concerns relating to fairness, transparency, communication, or general platform conduct may be raised through the support channel if they relate to a listed platform or the wider network experience.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">Can I report unusual behaviour even if I cannot fully explain it?</button>
-            <div class="faq-answer">
-              Yes. You do not need to provide technical language or a perfect explanation. If something appears unusual or inconsistent, you may report what you observed and let support review the matter further.
+              You may submit a complaint or concern for review. If the matter relates to a specific account or transaction, the relevant partner platform may still need to handle the case directly. Gold Group Australia can receive broader fairness, clarity, or network-level concerns.
             </div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question">Do you handle account login, deposits, or withdrawals directly?</button>
             <div class="faq-answer">
-              Gold Group Australia does not directly manage user accounts, transactions, or platform-side balances for partner platforms. Those matters are generally handled by the respective platform directly. However, you may still contact support if you need clarification or wish to raise a broader concern.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">Can I use the support email for feedback or suggestions?</button>
-            <div class="faq-answer">
-              Yes. The support channel may also be used for general feedback, suggestions, or comments relating to the Gold Group Australia directory and its listed references.
+              No. Gold Group Australia does not directly manage user accounts, transactions, withdrawals, deposits, KYC verification, or platform-side balances. These matters are generally handled by the relevant partner platform directly.
             </div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question">What should I include when contacting support?</button>
             <div class="faq-answer">
-              It is helpful to include the platform name, the nature of your concern, the relevant link or reference if applicable, and a brief summary of what happened. If you have screenshots or clear supporting details, those may also be useful when raising a matter by email.
+              Include the platform name, the relevant link or screenshot, a short explanation of the issue, the date or time if relevant, and the reason you believe the matter needs clarification or review.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">Can I contact support if I am unsure which platform to approach?</button>
+            <div class="faq-answer">
+              Yes. If you are unsure whether your issue belongs to Gold Group Australia or a specific partner platform, you may contact the support email for guidance. You may be directed to the correct platform support channel if the matter is account-specific.
             </div>
           </div>
         </div>
       </section>
 
       <div class="footer-space"></div>
-    </div>
-  </main>
+    </main>
+  </div>
 
   <script>
     const menuToggle = document.getElementById("menuToggle");
     const mainNav = document.getElementById("mainNav");
 
     if (menuToggle && mainNav) {
-      menuToggle.addEventListener("click", function (e) {
-        e.stopPropagation();
-        mainNav.classList.toggle("open");
-      });
-
-      mainNav.addEventListener("click", function (e) {
-        e.stopPropagation();
-      });
-
-      document.addEventListener("click", function () {
-        mainNav.classList.remove("open");
+      menuToggle.addEventListener("click", () => {
+        mainNav.classList.toggle("show");
       });
     }
 
-    document.querySelectorAll(".faq-question").forEach((button) => {
-      button.addEventListener("click", function (e) {
-        e.stopPropagation();
-        this.parentElement.classList.toggle("open");
+    document.querySelectorAll(".faq-question").forEach(button => {
+      button.addEventListener("click", () => {
+        const item = button.parentElement;
+        item.classList.toggle("open");
       });
     });
   </script>
