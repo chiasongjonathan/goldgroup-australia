@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Anti-Scam & Safety | Gold Group Australia</title>
+  <meta name="description" content="Gold Group Australia anti-scam and safety guide covering official access checks, suspicious link reporting, fake website warnings, user protection and directory verification." />
+
+  <style>
+    :root {
+      --bg: #050505;
+      --gold: #d7b04c;
+      --gold-2: #f0d487;
+      --text: #ffffff;
+      --muted: rgba(255,255,255,.78);
+      --soft: rgba(255,255,255,.10);
+      --card: rgba(12,12,12,.88);
+      --max: 1220px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 18% 22%, rgba(255, 196, 0, 0.10), transparent 30%),
+        radial-gradient(circle at 82% 30%, rgba(255, 196, 0, 0.08), transparent 26%),
+        linear-gradient(180deg, #050505 0%, #0b0b0b 55%, #090909 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.7;
+      letter-spacing: .01em;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .14;
+      background-image:
+        radial-gradient(#c99618 1px, transparent 1px),
+        radial-gradient(#c99618 1px, transparent 1px);
+      background-size: 80px 80px, 120px 120px;
+      background-position: 0 0, 40px 40px;
+      z-index: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-wrap {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 24px));
+      margin: 0 auto;
+    }
+
+    /* ================= HEADER ================= */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(5,5,5,.90);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    .header-wrap {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      flex-shrink: 0;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-shrink: 0;
+    }
+
+    .brand-logo img {
+      width: 56px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
+    }
+
+    .brand-text {
+      min-width: 0;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1.15;
+      color: #fff;
+      white-space: nowrap;
+    }
+
+    .brand-text span {
+      display: block;
+      margin-top: 2px;
+      font-size: 12px;
+      color: rgba(255,255,255,.72);
+      white-space: nowrap;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .main-nav a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: #ece4cf;
+      line-height: 1;
+      white-space: nowrap;
+      transition: color .18s ease;
+    }
+
+    .main-nav a:hover {
+      color: var(--gold-2);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    /* ================= TICKER ================= */
+
+    .ticker-wrap {
+      overflow: hidden;
+      border-top: 1px solid rgba(255,208,71,.08);
+      border-bottom: 1px solid rgba(255,208,71,.08);
+      background: rgba(255,196,0,.04);
+      white-space: nowrap;
+    }
+
+    .ticker {
+      display: inline-block;
+      white-space: nowrap;
+      padding: 9px 0;
+      font-size: 12px;
+      color: #d9b75b;
+      animation: tickerMove 40s linear infinite;
+    }
+
+    @keyframes tickerMove {
+      from { transform: translateX(100%); }
+      to { transform: translateX(-100%); }
+    }
+
+    /* ================= CONTENT ================= */
+
+    .content {
+      width: min(980px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 52px 0 56px;
+    }
+
+    .hero-card,
+    .content-card,
+    .note-card {
+      width: 100%;
+      max-width: 980px;
+      background: linear-gradient(180deg, rgba(19,19,19,.88), rgba(10,10,10,.94));
+      border: 1px solid rgba(255,208,71,.12);
+      border-radius: 30px;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.03),
+        0 0 0 1px rgba(255,255,255,.02);
+      backdrop-filter: blur(6px);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-card {
+      padding: 34px 30px;
+      margin-bottom: 22px;
+    }
+
+    .content-card,
+    .note-card {
+      padding: 30px;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 800;
+      color: #e0bc59;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 5vw, 64px);
+      line-height: 1.02;
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 18px;
+      color: #fff;
+      max-width: 850px;
+    }
+
+    h2 {
+      font-size: 32px;
+      line-height: 1.08;
+      font-weight: 900;
+      letter-spacing: -.5px;
+      margin-bottom: 14px;
+      color: #fff;
+    }
+
+    h3 {
+      font-size: 18px;
+      line-height: 1.2;
+      font-weight: 900;
+      color: #f1cb66;
+      margin: 18px 0 10px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.85;
+      color: rgba(255,255,255,.84);
+      margin-bottom: 14px;
+      max-width: 880px;
+    }
+
+    .safety-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .safety-box,
+    .warning-item,
+    .step-item,
+    .notice-item {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,196,0,.045);
+      border: 1px solid rgba(255,208,71,.10);
+    }
+
+    .safety-box strong,
+    .warning-item strong,
+    .step-item strong,
+    .notice-item strong {
+      display: block;
+      color: #f1cb66;
+      font-size: 15px;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    .safety-box span,
+    .warning-item span,
+    .step-item span,
+    .notice-item span {
+      display: block;
+      color: rgba(255,255,255,.80);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .warning-list,
+    .step-list,
+    .notice-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .email-link {
+      display: inline-block;
+      margin: 4px 0 10px;
+      color: #f1cb66;
+      font-size: 18px;
+      font-weight: 900;
+      text-decoration: underline;
+      word-break: break-word;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .cta-btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 900;
+      padding: 0 20px;
+      background: linear-gradient(135deg, #fed608, #c68e0d);
+      color: #000;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.18);
+      transition: transform .18s ease, filter .18s ease;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .faq-item {
+      border-radius: 18px;
+      background: rgba(255,255,255,.025);
+      border: 1px solid rgba(255,255,255,.07);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      min-height: 58px;
+      background: transparent;
+      color: #fff;
+      border: none;
+      text-align: left;
+      padding: 16px 18px;
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.45;
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .faq-question::after {
+      content: "+";
+      font-size: 22px;
+      line-height: 1;
+      color: #d7ae43;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .faq-item.open .faq-question::after {
+      content: "–";
+    }
+
+    .faq-answer {
+      display: none;
+      color: rgba(255,255,255,.82);
+      font-size: 14px;
+      line-height: 1.8;
+      padding: 0 18px 18px;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    .footer-space {
+      height: 24px;
+    }
+
+    /* ================= TABLET: 768px - 1024px ================= */
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .container {
+        width: min(760px, calc(100% - 36px));
+      }
+
+      .content {
+        width: min(760px, calc(100% - 36px));
+        padding: 42px 0 52px;
+      }
+
+      .header-wrap {
+        min-height: 72px;
+      }
+
+      .main-nav {
+        gap: 15px;
+      }
+
+      .main-nav a {
+        font-size: 13px;
+      }
+
+      .brand-logo img {
+        width: 54px;
+      }
+
+      .brand-text strong {
+        font-size: 16px;
+      }
+
+      .hero-card,
+      .content-card,
+      .note-card {
+        max-width: 760px;
+      }
+
+      .hero-card {
+        padding: 30px 28px;
+      }
+
+      .content-card,
+      .note-card {
+        padding: 28px;
+        border-radius: 28px;
+      }
+
+      h1 {
+        font-size: 44px;
+      }
+
+      h2 {
+        font-size: 30px;
+      }
+
+      p {
+        font-size: 16px;
+        max-width: 720px;
+      }
+    }
+
+    /* ================= MOBILE: 0 - 767px ================= */
+
+    @media (max-width: 767px) {
+      .container {
+        width: 100%;
+        padding: 0 12px;
+      }
+
+      .header-wrap {
+        min-height: 68px;
+        flex-wrap: wrap;
+        padding: 8px 12px;
+      }
+
+      .brand {
+        flex: 1;
+      }
+
+      .brand-logo img {
+        width: 52px;
+      }
+
+      .brand-text strong {
+        font-size: 15px;
+      }
+
+      .brand-text span {
+        font-size: 11px;
+      }
+
+      .menu-toggle {
+        display: grid;
+        place-items: center;
+      }
+
+      .main-nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 6px 0 8px;
+      }
+
+      .main-nav.show {
+        display: flex;
+      }
+
+      .main-nav a {
+        display: block;
+        width: 100%;
+        padding: 12px 0;
+        font-size: 15px;
+      }
+
+      .ticker {
+        font-size: 11px;
+        padding: 8px 0;
+      }
+
+      .content {
+        width: 100%;
+        padding: 24px 14px 42px;
+      }
+
+      .hero-card,
+      .content-card,
+      .note-card {
+        max-width: none;
+        border-radius: 24px;
+      }
+
+      .hero-card {
+        padding: 22px 16px;
+        margin-bottom: 18px;
+      }
+
+      .content-card,
+      .note-card {
+        padding: 20px 16px;
+        margin-bottom: 18px;
+      }
+
+      .eyebrow {
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
+
+      h1 {
+        font-size: 28px;
+        line-height: 1.06;
+        margin-bottom: 16px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      h3 {
+        font-size: 16px;
+      }
+
+      p {
+        font-size: 14px;
+        line-height: 1.78;
+        margin-bottom: 13px;
+      }
+
+      .safety-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .safety-box,
+      .warning-item,
+      .step-item,
+      .notice-item {
+        padding: 14px;
+        border-radius: 16px;
+      }
+
+      .safety-box strong,
+      .warning-item strong,
+      .step-item strong,
+      .notice-item strong {
+        font-size: 14px;
+      }
+
+      .safety-box span,
+      .warning-item span,
+      .step-item span,
+      .notice-item span,
+      .faq-answer {
+        font-size: 13px;
+      }
+
+      .email-link {
+        font-size: 15px;
+      }
+
+      .cta-row {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .cta-btn {
+        width: 100%;
+      }
+
+      .faq-question {
+        min-height: 54px;
+        padding: 14px;
+        font-size: 14px;
+      }
+
+      .faq-answer {
+        padding: 0 14px 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrap">
+    <header class="site-header">
+      <div class="container header-wrap">
+        <a href="/" class="brand">
+          <div class="brand-logo">
+            <img src="image/GOLD LOGO.png" alt="Gold Group Australia Logo">
+          </div>
+          <div class="brand-text">
+            <strong>Gold Group Australia</strong>
+            <span>Official Website Directory</span>
+          </div>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+
+        <nav class="main-nav" id="mainNav">
+          <a href="/companies">Companies</a>
+          <a href="/about">About</a>
+          <a href="/support">Support</a>
+          <a href="/faq">FAQ</a>
+          <a href="/anti-scam">Anti-Scam</a>
+        </nav>
+      </div>
+
+      <div class="ticker-wrap">
+        <div class="ticker">
+          Verified platform network • Trusted access across Australia • Secure and protected environment • Report suspicious links • Use official access points only • 18+ only • Please engage responsibly
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="hero-card">
+        <div class="eyebrow">Official GGA Safety Page</div>
+        <h1>Anti-Scam & Safety</h1>
+
+        <p>
+          Gold Group Australia places strong importance on official access visibility, user awareness, and safer navigation across listed partner platform references. As digital platform environments continue to evolve, users may encounter copied websites, misleading links, fake support contacts, unofficial social pages, or messages that attempt to imitate recognised platform references.
+        </p>
+
+        <p>
+          This page is designed to help users identify warning signs, understand safer access habits, and know what steps to take when something appears suspicious, inconsistent, or misleading. If a platform reference, support contact, domain, payment instruction, or website link does not look right, users should pause immediately and verify the source before taking further action.
+        </p>
+
+        <p>
+          Gold Group Australia operates as a central directory and official reference point. The purpose of this safety page is not to create fear, but to provide a clear verification standard so users can avoid confusion and reduce exposure to unofficial or suspicious sources.
+        </p>
+      </section>
+
+      <section class="content-card">
+        <h2>Our Approach to Safety</h2>
+
+        <p>
+          Gold Group Australia helps users distinguish between recognised partner references and unofficial sources that may appear elsewhere online. A safer access environment begins with clarity: users should know where official references are published, how listed access points are presented, and where to contact support when a website or message does not match expectations.
+        </p>
+
+        <p>
+          Scam or impersonation risk often begins when a user follows a link from an unknown source without checking it against the official directory. This can include links shared through public comments, unknown Telegram or WhatsApp contacts, copied advertisements, fake support profiles, or pages that appear visually similar to a listed platform but are not part of the recognised directory.
+        </p>
+
+        <div class="safety-grid">
+          <div class="safety-box">
+            <strong>Verify before using</strong>
+            <span>Always compare unfamiliar links, domains, or support contacts against the latest Gold Group Australia directory reference before proceeding.</span>
+          </div>
+
+          <div class="safety-box">
+            <strong>Pause when unsure</strong>
+            <span>If a page, message, or contact feels inconsistent, do not continue based on assumption. Stop, check, and contact support if needed.</span>
+          </div>
+
+          <div class="safety-box">
+            <strong>Use listed access points</strong>
+            <span>Start from the official directory wherever possible instead of relying on screenshots, forwarded links, or third-party instructions.</span>
+          </div>
+
+          <div class="safety-box">
+            <strong>Report suspicious sources</strong>
+            <span>Suspicious websites, fake profiles, copied pages, or unusual instructions should be reported so they can be reviewed at directory level.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-card">
+        <h2>Common Scam and Impersonation Risks</h2>
+
+        <p>
+          Scam attempts do not always look obvious. Some may appear polished, use familiar names, copy branding elements, or claim to represent a listed platform. Others may rely on urgency, confusion, or direct pressure to make users act before checking the source properly.
+        </p>
+
+        <p>
+          Users should be especially careful when a link or contact appears outside the official directory environment. Even if a message includes familiar platform names, logos, bonus wording, or support-style language, it should not be trusted automatically without verification.
+        </p>
+
+        <div class="warning-list">
+          <div class="warning-item">
+            <strong>Copied or lookalike websites</strong>
+            <span>Pages that use similar names, colours, logos, or layout but do not match the listed official access point should be treated carefully.</span>
+          </div>
+
+          <div class="warning-item">
+            <strong>Fake support contacts</strong>
+            <span>Unknown accounts claiming to be customer support, finance, compliance, admin, or platform staff should not be trusted unless they are confirmed through official channels.</span>
+          </div>
+
+          <div class="warning-item">
+            <strong>Suspicious payment instructions</strong>
+            <span>Any unusual payment request, third-party bank detail, private wallet instruction, or payment direction outside the recognised platform process should be verified before action.</span>
+          </div>
+
+          <div class="warning-item">
+            <strong>Pressure or urgency tactics</strong>
+            <span>Messages that rush users to act immediately, threaten account loss, or demand quick action before verification should be treated as a warning sign.</span>
+          </div>
+
+          <div class="warning-item">
+            <strong>Unverified social pages</strong>
+            <span>Public comments, random groups, copied social profiles, or unofficial advertisements may not reflect the correct directory reference.</span>
+          </div>
+
+          <div class="warning-item">
+            <strong>Unusual account requests</strong>
+            <span>Requests for login credentials, verification codes, private banking details, screenshots, or personal information outside official support procedures should be avoided.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-card">
+        <h2>Safe Access Checklist</h2>
+
+        <p>
+          Before using any listed platform reference, users should follow a simple safety checklist. This helps reduce the chance of accessing the wrong page or interacting with an unofficial contact source.
+        </p>
+
+        <div class="step-list">
+          <div class="step-item">
+            <strong>1. Start from the directory</strong>
+            <span>Use Gold Group Australia as the central reference point when checking partner platform names, access links, and general listing information.</span>
+          </div>
+
+          <div class="step-item">
+            <strong>2. Check the domain carefully</strong>
+            <span>Look for spelling changes, extra characters, strange endings, copied names, or domain formats that do not match the listed reference.</span>
+          </div>
+
+          <div class="step-item">
+            <strong>3. Avoid unknown instructions</strong>
+            <span>Do not follow account, payment, or verification instructions received from unconfirmed third-party contacts or public comment sections.</span>
+          </div>
+
+          <div class="step-item">
+            <strong>4. Confirm support channels</strong>
+            <span>If you need help, use official platform support or the Gold Group Australia support email for directory-level clarification.</span>
+          </div>
+
+          <div class="step-item">
+            <strong>5. Report anything suspicious</strong>
+            <span>If something appears misleading, copied, unsafe, or inconsistent, report it before continuing further.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-card">
+        <h2>Official Verification and Directory Reference</h2>
+
+        <p>
+          Gold Group Australia maintains its directory so users have a central place to compare listed platform references and identify recognised access points. This reduces dependence on scattered links, old screenshots, forwarded messages, or pages that cannot be clearly connected to the official network.
+        </p>
+
+        <p>
+          Verification is important even when a page looks almost correct. A copied website may use similar design elements, familiar words, or platform-style content, but still not be part of the recognised directory. Users should always rely on the latest official directory information instead of assuming that a familiar-looking page is legitimate.
+        </p>
+
+        <p>
+          When in doubt, the safer action is to stop and confirm. This is especially important before submitting personal details, account information, verification documents, payment references, or any private information through an unfamiliar page.
+        </p>
+      </section>
+
+      <section class="content-card">
+        <h2>When to Contact Support</h2>
+
+        <p>
+          Users are encouraged to contact Gold Group Australia support if they encounter anything that appears suspicious, misleading, unsafe, or inconsistent with the official directory structure. You may also contact support if you simply feel uncertain and want confirmation before proceeding.
+        </p>
+
+        <div class="warning-list">
+          <div class="warning-item">
+            <strong>Website or domain uncertainty</strong>
+            <span>You are unsure whether a website, landing page, backup domain, or access link is part of the recognised directory.</span>
+          </div>
+
+          <div class="warning-item">
+            <strong>Possible impersonation</strong>
+            <span>A person or account claims to represent a listed platform, but the contact source cannot be verified clearly.</span>
+          </div>
+
+          <div class="warning-item">
+            <strong>Suspicious payment or account request</strong>
+            <span>You receive instructions that appear unusual, private, urgent, or different from normal official platform procedures.</span>
+          </div>
+
+          <div class="warning-item">
+            <strong>Copied social media or advertisement</strong>
+            <span>You find a public post, ad, profile, or group that appears to imitate a listed partner platform or Gold Group Australia.</span>
+          </div>
+        </div>
+
+        <a class="email-link" href="mailto:support@goldgroupaustralia.com">
+          support@goldgroupaustralia.com
+        </a>
+
+        <p>
+          Reports may include suspicious website links, misleading platform references, unusual contact attempts, impersonation concerns, or any matter that appears unsafe, irregular, or outside normal expectations.
+        </p>
+
+        <div class="cta-row">
+          <a href="mailto:support@goldgroupaustralia.com?subject=Gold%20Group%20Australia%20Safety%20Enquiry" class="cta-btn">Contact Support</a>
+          <a href="mailto:support@goldgroupaustralia.com?subject=Gold%20Group%20Australia%20Suspicious%20Link%20Report" class="cta-btn">Report Suspicious</a>
+        </div>
+      </section>
+
+      <section class="content-card">
+        <h2>How to Submit a Useful Report</h2>
+
+        <p>
+          A report does not need to be technical or perfectly written. The most important thing is to provide enough information for the issue to be understood clearly. If you have screenshots, links, usernames, messages, or page details, include them in your email.
+        </p>
+
+        <div class="step-list">
+          <div class="step-item">
+            <strong>Link or page involved</strong>
+            <span>Include the suspicious website, social page, message link, support contact, or access point that caused concern.</span>
+          </div>
+
+          <div class="step-item">
+            <strong>Platform name</strong>
+            <span>Tell us which listed platform the issue appears to relate to, such as PG9 AUS, H4WIN AUS, RR4WIN AUS, BOOMERANG AUS, or SKYROO AUS.</span>
+          </div>
+
+          <div class="step-item">
+            <strong>What looked suspicious</strong>
+            <span>Explain what seemed wrong, such as spelling, payment details, support claims, pressure tactics, unusual instructions, or mismatched branding.</span>
+          </div>
+
+          <div class="step-item">
+            <strong>Supporting evidence</strong>
+            <span>Attach screenshots or copied message content where available. This helps support review the issue more accurately.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-card">
+        <h2>Safety FAQ</h2>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">What should I do if a link looks similar but not exactly the same?</button>
+            <div class="faq-answer">
+              Do not proceed immediately. Similar-looking links can be used to mislead users. Compare the link against the official Gold Group Australia directory and contact support if you are unsure.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">Can a fake page copy a real platform name or logo?</button>
+            <div class="faq-answer">
+              Yes. A suspicious page may copy names, logos, colours, banners, or platform-style wording. Visual similarity alone does not prove that a website or contact source is official.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">Should I trust someone who contacts me privately claiming to be support?</button>
+            <div class="faq-answer">
+              Be cautious. Private messages from unverified contacts should not be trusted automatically. Use official support channels or contact Gold Group Australia if the source cannot be confirmed.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">What if I already clicked a suspicious link?</button>
+            <div class="faq-answer">
+              Stop using the page, avoid entering further information, and contact the relevant official support channel. If you shared account or personal details, report the matter as soon as possible.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">Can I report something even if I am not fully sure it is a scam?</button>
+            <div class="faq-answer">
+              Yes. You can report uncertainty. You do not need to prove that something is fraudulent before contacting support. If something feels suspicious or inconsistent, it is reasonable to ask for clarification.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="note-card">
+        <h3>Important Safety Notice</h3>
+
+        <div class="notice-list">
+          <div class="notice-item">
+            <strong>Use official references</strong>
+            <span>Always begin from the official Gold Group Australia directory or a verified partner platform access point when checking links.</span>
+          </div>
+
+          <div class="notice-item">
+            <strong>Do not share private details with unknown contacts</strong>
+            <span>Avoid sharing passwords, verification codes, banking details, identity documents, or account screenshots with unverified sources.</span>
+          </div>
+
+          <div class="notice-item">
+            <strong>Report suspicious pages early</strong>
+            <span>Early reporting helps reduce confusion and allows suspicious links, copied pages, or unusual contact sources to be reviewed more quickly.</span>
+          </div>
+
+          <div class="notice-item">
+            <strong>18+ only</strong>
+            <span>Please engage responsibly, follow applicable local laws, and review each platform’s own terms before using any listed service.</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer-space"></div>
+    </main>
+  </div>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        mainNav.classList.toggle("show");
+      });
+    }
+
+    document.querySelectorAll(".faq-question").forEach(button => {
+      button.addEventListener("click", () => {
+        const item = button.parentElement;
+        item.classList.toggle("open");
+      });
+    });
+  </script>
+</body>
+</html>

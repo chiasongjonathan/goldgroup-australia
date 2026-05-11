@@ -6,6 +6,7 @@ const DOMAIN_CONFIG = {
     "https://pg9aus.co",
     "https://pg9aus.xyz"
   ],
+
   "H4WIN AUS": [
     "https://h4winaus.net",
     "https://h4winau.org",
@@ -13,6 +14,7 @@ const DOMAIN_CONFIG = {
     "https://h4winau.net",
     "https://h4winaus.com"
   ],
+
   "RR4WIN AUS": [
     "https://rr4winaus.net",
     "https://rr4winau.com",
@@ -20,12 +22,21 @@ const DOMAIN_CONFIG = {
     "https://rr4winaus.co",
     "https://rr4winau.org"
   ],
+
   "BOOMERANG AUS": [
     "https://boomerangau.com",
     "https://boomerangaus.casino",
     "https://boomerangaudollar.com",
     "https://boomerangaus.co",
     "https://boomerangaus.xyz"
+  ],
+
+  "SKYROO AUS": [
+    "https://skyrooaus.casino",
+    "https://skyrooaus.org",
+    "https://skyroocasino.com",
+    "https://skyrooau.com",
+    "https://skyrooau.org"
   ]
 };
 
@@ -89,11 +100,49 @@ function buildInitialState() {
 
 async function loadState(env) {
   const raw = await env.MONITOR_KV.get(KV_KEY, "json");
+
   if (!raw || !raw.domains) {
     const state = buildInitialState();
     await saveState(env, state);
     return state;
   }
+
+  let changed = false;
+
+  for (const [company, urls] of Object.entries(DOMAIN_CONFIG)) {
+    for (const url of urls) {
+      if (!raw.domains[url]) {
+        raw.domains[url] = {
+          company,
+          url,
+          status: "checking",
+          ms: null,
+          consecutiveFailures: 0,
+          lastCheckedAt: null,
+          lastSuccessAt: null,
+          nextCheckAt: 0
+        };
+        changed = true;
+      } else if (raw.domains[url].company !== company) {
+        raw.domains[url].company = company;
+        changed = true;
+      }
+    }
+  }
+
+  const validUrls = new Set(Object.values(DOMAIN_CONFIG).flat());
+
+  for (const url of Object.keys(raw.domains)) {
+    if (!validUrls.has(url)) {
+      delete raw.domains[url];
+      changed = true;
+    }
+  }
+
+  if (changed) {
+    await saveState(env, raw);
+  }
+
   return raw;
 }
 
@@ -172,10 +221,12 @@ function buildApiPayload(state) {
       const order = { active: 0, checking: 1, inactive: 2 };
       const sa = order[a.status] ?? 9;
       const sb = order[b.status] ?? 9;
+
       if (sa !== sb) return sa - sb;
 
       const msA = Number(a.ms ?? 999999);
       const msB = Number(b.ms ?? 999999);
+
       if (msA !== msB) return msA - msB;
 
       return a.url.localeCompare(b.url);
@@ -199,7 +250,9 @@ async function processChecks(env) {
   const state = await loadState(env);
   const currentTime = now();
 
-  const due = Object.values(state.domains).filter(item => currentTime >= (item.nextCheckAt || 0));
+  const due = Object.values(state.domains).filter(item => {
+    return currentTime >= (item.nextCheckAt || 0);
+  });
 
   if (!due.length) {
     return state;
@@ -212,7 +265,7 @@ async function processChecks(env) {
 
   await saveState(env, state);
 
-  await runLimited(due, CONCURRENCY, async (item) => {
+  await runLimited(due, CONCURRENCY, async item => {
     const result = await checkUrl(item.url);
 
     if (result.ok) {
@@ -268,6 +321,27 @@ export default {
           "Access-Control-Allow-Headers": "*"
         }
       });
+    }
+
+    const cleanPathMap = {
+      "/about": "/about.html",
+      "/companies": "/companies.html",
+      "/support": "/support.html",
+      "/faq": "/faq.html",
+      "/anti-scam": "/anti-scam&safety.html",
+      "/anti-scam-safety": "/anti-scam&safety.html"
+    };
+
+    if (url.pathname.startsWith("/public/")) {
+      const redirectUrl = new URL(request.url);
+      redirectUrl.pathname = url.pathname.replace("/public", "").replace(/\.html$/, "");
+      return Response.redirect(redirectUrl.toString(), 301);
+    }
+
+    if (cleanPathMap[url.pathname]) {
+      const assetUrl = new URL(request.url);
+      assetUrl.pathname = cleanPathMap[url.pathname];
+      return env.ASSETS.fetch(new Request(assetUrl, request));
     }
 
     return env.ASSETS.fetch(request);
